@@ -24,5 +24,6 @@
   </dependencies>
   <modules>
     <module>rest-api</module>
+    <module>rest-dto</module>
   </modules>
 </project>
