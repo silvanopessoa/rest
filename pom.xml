@@ -25,5 +25,7 @@
   <modules>
     <module>rest-api</module>
     <module>rest-dto</module>
+    <module>rest-model-transformation</module>
+    <module>rest-model</module>
   </modules>
 </project>

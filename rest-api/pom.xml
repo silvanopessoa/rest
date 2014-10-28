@@ -7,7 +7,7 @@
 		<groupId>br.com.silvanopessoa.rest</groupId>
 		<artifactId>rest</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		
+
 	</parent>
 	<artifactId>rest-api</artifactId>
 	<packaging>war</packaging>
@@ -34,6 +34,16 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.7</version>
+		</dependency>
+		<dependency>
+			<groupId>br.com.silvanopessoa.rest</groupId>
+			<artifactId>rest-model-transformation</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
+			<version>0.16.0.RELEASE</version>
 		</dependency>
 	</dependencies>
 	<build>
