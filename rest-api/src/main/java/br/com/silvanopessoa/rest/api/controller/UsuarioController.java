@@ -1,5 +1,6 @@
 package br.com.silvanopessoa.rest.api.controller;
 
+import static br.com.silvanopessoa.rest.api.util.ResponseEntityUtil.createHeaders;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
@@ -29,15 +30,17 @@ public class UsuarioController {
 
     /**
      * Salva o(a) usuario.
+     * If a resource has been created on the origin server, the response SHOULD be 201 (Created)
      * 
-     * http://azagorneanu.blogspot.com.br/2013/06/hateoas-using-spring-framework.html
-     * http://restpatterns.org/HTTP_Methods/POST
+     * @see http://azagorneanu.blogspot.com.br/2013/06/hateoas-using-spring-framework.html
+     * @see http://restpatterns.org/HTTP_Methods/POST
      */
     @RequestMapping(value = "/usuarios", method = POST, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> createUsuario(@RequestBody Usuario usuario) {
-        LOGGER.info("Salvar usuário.");
-        // If a resource has been created on the origin server, the response SHOULD be 201 (Created)
-        return new ResponseEntity<Void>(CREATED);
+        LOGGER.info("POST USUARIO | Iniciado | Salvar usuário. Entity:" +usuario);
+        
+        LOGGER.info("POST USUARIO | Concluido | Salvar usuário.");
+        return new ResponseEntity<Void>(createHeaders(usuario),CREATED);
     }
 
     public ResponseEntity<Usuario> getUsuario(Long id, Object object) {
