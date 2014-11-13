@@ -27,5 +27,7 @@
     <module>rest-dto</module>
     <module>rest-model-transformation</module>
     <module>rest-model</module>
+    <module>rest-persist</module>
+    <module>rest-service</module>
   </modules>
 </project>
