@@ -7,10 +7,10 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.silvanopessoa.rest.api.model.Usuario;
 
-// TODO: Auto-generated Javadoc
 /**
  * O(a) Class UsuarioController.
  *
@@ -42,9 +41,7 @@ public class UsuarioController {
      *
      * @param usuario o(a) usuario
      * @return the response entity
-     * @see http
-     *      ://azagorneanu.blogspot.com.br/2013/06/hateoas-using-spring-framework
-     *      .html
+     * @see http://azagorneanu.blogspot.com.br/2013/06/hateoas-using-spring-framework.html
      * @see http://restpatterns.org/HTTP_Methods/POST
      */
     @RequestMapping(value = "/usuarios", method = POST, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
@@ -64,10 +61,25 @@ public class UsuarioController {
      * @return o(a) usuario
      */
     public ResponseEntity<Usuario> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
+        LOGGER.info("GET USUARIO | Iniciado | Obtem o usuário. Indenticador do usuário:" + login);
+        //TODO: Validar data de alteração.
+        LOGGER.info("GET USUARIO | Concluido | Obtem o usuário.");
         return null;
     }
 
-
+    /**
+     * Atualiza o(a) usuario.
+     * 
+     * @author silvano.pessoa
+     * 
+     * @see http://restpatterns.org/HTTP_Methods/PUT
+     */
+    @ResponseStatus(NO_CONTENT)
+    @RequestMapping(method=PUT)
+    public void updateUsuario(){
+        
+    }
+    
     /**
      * Exclui o(a) usuario.
      * 
