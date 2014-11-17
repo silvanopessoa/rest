@@ -13,6 +13,12 @@
         <dependent-module archiveName="rest-dto-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/rest-dto/rest-dto">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="rest-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/rest-service/rest-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="rest-persist-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/rest-persist/rest-persist">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="rest-api"/>
         <property name="java-output-path" value="/rest-api/target/classes"/>
     </wb-module>

@@ -11,6 +11,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.silvanopessoa.rest.api.model.Usuario;
+import br.com.silvanopessoa.rest.api.validation.UsuarioValidator;
+import br.com.silvanopessoa.rest.service.UsuarioService;
 
 /**
  * O(a) Class UsuarioController.
@@ -29,29 +32,99 @@ import br.com.silvanopessoa.rest.api.model.Usuario;
  * @since 25/10/2014 - 23:56:38
  */
 @RestController
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     /** LOG. */
     private static final Logger LOGGER = LoggerFactory.getLogger(UsuarioController.class);
+    
+    /** O(a) validator. */
+    @Autowired
+    private UsuarioValidator validator;
+    
+    /** O(a) service. */
+    @Autowired
+    private UsuarioService service;
 
     /**
-     * Salva o(a) usuario. If a resource has been created on the origin server,
+     * Salva o(a) usuario. 
+     * 
+     * If a resource has been created on the origin server,
      * 
      * Resposta: the response SHOULD be 201 (Created)
-     *
+     * @author silvano.pessoa
+     * 
      * @param usuario o(a) usuario
      * @return the response entity
+     * 
      * @see http://azagorneanu.blogspot.com.br/2013/06/hateoas-using-spring-framework.html
      * @see http://restpatterns.org/HTTP_Methods/POST
      */
-    @RequestMapping(value = "/usuarios", method = POST, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
+    @RequestMapping(method = POST, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> createUsuario(@RequestBody Usuario usuario) {
         LOGGER.info("POST USUARIO | Iniciado | Salvar usuário. Entity:" + usuario);
-
-        LOGGER.info("POST USUARIO | Concluido | Salvar usuário.");
+        validator.checkCreateRequest(usuario);
+        LOGGER.info("POST USUARIO | Concluido | Salvar usuário." + usuario);
         return new ResponseEntity<Void>(createHeaders(usuario), CREATED);
     }
-
+    
+    /**
+     * Atualiza o(a) usuario.
+     *  
+     * @author silvano.pessoa
+     * 
+     * @see http://restpatterns.org/HTTP_Methods/PUT
+     */
+    @RequestMapping(method=PUT, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
+    public ResponseEntity<Void> updateUsuario(@PathVariable("login") String login, @RequestBody Usuario usuario){
+        LOGGER.info("PUT USUARIO | Iniciado | Alterar usuário. Usuário: "+login+" Entity:" + usuario);
+        String clienteId ="";//TODO: IMPLEMENTAR
+        validator.checkUpdateRequest(login, usuario);
+        ResponseEntity<Void> responseEntity = this.createUsuarioOrUpdateUsuario(login, usuario,clienteId);
+        LOGGER.info("PUT USUARIO | Concluido | Alterar usuário. Usuário: "+login);
+        return responseEntity;
+    }
+    
+    /**
+     * Creates the usuario or update usuario.
+     *
+     * @param login o(a) login
+     * @param usuario o(a) usuario
+     * @param clienteId o(a) cliente id
+     * @return the response entity
+     */
+    protected ResponseEntity<Void> createUsuarioOrUpdateUsuario(String login, Usuario usuario, String clienteId){
+        ResponseEntity<Void> responseEntity;
+        if(service.isNewUsuario(login,clienteId)){
+            LOGGER.info("PUT USUARIO | O usuário é novo e será criado. Usuário: "+login+" Entity:" + usuario);
+            responseEntity = this.createUsuario(usuario);
+        }else{
+            LOGGER.info("PUT USUARIO | O usuário será atualizado. Usuário: "+login+" Entity:" + usuario);
+            Usuario usuarioAlterado = service.updateUsuario(login, usuario, clienteId);
+            responseEntity = new ResponseEntity<Void>(createHeaders(usuarioAlterado), NO_CONTENT);//TODO: UPDATE TEM LOCATION?
+        }
+        return responseEntity;
+    }
+    
+    
+    /**
+     * Exclui o(a) usuario.
+     * 
+     * Resposta: 204 (No Content) if the action has been enacted but the response does not include an entity.
+     * 
+     * @author silvano.pessoa
+     * @see http://restpatterns.org/HTTP_Methods/DELETE
+     * @param login o(a) login
+     */
+    @ResponseStatus(NO_CONTENT)
+    public void deleteUsuario(@PathVariable("login") String login) {
+        LOGGER.info("DELETE USUARIO | Iniciado | Usuário:" + login);
+        //NOT FOUND 404
+        //Not Content 204
+        LOGGER.info("DELETE USUARIO | Concluído | Usuário:" + login);
+    }
+    
+    
     /**
      * Obtém o valor do(a)(s) usuario.
      *
@@ -67,33 +140,5 @@ public class UsuarioController {
         return null;
     }
 
-    /**
-     * Atualiza o(a) usuario.
-     * 
-     * @author silvano.pessoa
-     * 
-     * @see http://restpatterns.org/HTTP_Methods/PUT
-     */
-    @ResponseStatus(NO_CONTENT)
-    @RequestMapping(method=PUT)
-    public void updateUsuario(){
-        
-    }
-    
-    /**
-     * Exclui o(a) usuario.
-     * 
-     * Resposta: 204 (No Content) if the action has been enacted but the response does not include an entity.
-     * 
-     * 
-     * @see http://restpatterns.org/HTTP_Methods/DELETE
-     * @param login o(a) login
-     */
-    @ResponseStatus(NO_CONTENT)
-    public void deleteUsuario(@PathVariable("login") String login) {
-        LOGGER.info("DELETE USUARIO | Iniciado | Usuário:" + login);
-        //NOT FOUND 404
-        //Not Content 204
-        LOGGER.info("DELETE USUARIO | Concluído | Usuário:" + login);
-    }
+
 }

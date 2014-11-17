@@ -23,11 +23,11 @@
     </dependency>
   </dependencies>
   <modules>
-    <module>rest-api</module>
+    <module>rest-model</module>
     <module>rest-dto</module>
     <module>rest-model-transformation</module>
-    <module>rest-model</module>
     <module>rest-persist</module>
     <module>rest-service</module>
+    <module>rest-api</module>
   </modules>
 </project>
