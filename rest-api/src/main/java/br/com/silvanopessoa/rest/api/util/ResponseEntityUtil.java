@@ -15,6 +15,7 @@ public class ResponseEntityUtil {
      * Contain an entity which describes the status of the request and refers to the new resource, and a Location header (see section 14.30).
      * 
      * @see http://restpatterns.org/HTTP_Methods/POST
+     * @see https://spring.io/guides/gs/rest-hateoas/
      * 
      * @param usuario the usuario
      * @return the http headers
