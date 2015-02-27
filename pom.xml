@@ -1,33 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>br.com.silvanopessoa.rest</groupId>
-  <artifactId>rest</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<groupId>br.com.silvanopessoa.rest</groupId>
+	<artifactId>rest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <name>rest</name>
-  <url>http://maven.apache.org</url>
+	<name>rest</name>
+	<url>http://maven.apache.org</url>
+	
+	<!-- PROPRIEDADES -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Spring - http://projects.spring.io/spring-framework/ -->
+		<spring-framework-version>4.1.5.RELEASE</spring-framework-version>
+	</properties>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<!-- DESENVOLVEDORES -->
+	<developers>
+		<developer>
+			<name>Silvano Pessoa</name>
+		</developer>
+	</developers>
+	
+	<!-- DEPENDENCY MANAGEMENT -->
+	<!-- http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html  -->
+	<!-- http://www.infoq.com/news/2014/07/springio-platform  -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${spring-framework-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <modules>
-    <module>rest-model</module>
-    <module>rest-dto</module>
-    <module>rest-model-transformation</module>
-    <module>rest-persist</module>
-    <module>rest-service</module>
-    <module>rest-api</module>
-  </modules>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<modules>
+		<module>rest-model</module>
+		<module>rest-dto</module>
+		<module>rest-model-transformation</module>
+		<module>rest-persist</module>
+		<module>rest-service</module>
+		<module>rest-api</module>
+	</modules>
 </project>

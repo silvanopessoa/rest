@@ -111,6 +111,7 @@ public class UsuarioController {
      * Exclui o(a) usuario.
      * 
      * Resposta: 204 (No Content) if the action has been enacted but the response does not include an entity.
+     * Resposta: 404
      * 
      * @author silvano.pessoa
      * @see http://restpatterns.org/HTTP_Methods/DELETE
@@ -119,6 +120,8 @@ public class UsuarioController {
     @ResponseStatus(NO_CONTENT)
     public void deleteUsuario(@PathVariable("login") String login) {
         LOGGER.info("DELETE USUARIO | Iniciado | Usuário:" + login);
+        String clienteId ="";//TODO: IMPLEMENTAR
+        service.findByLoginAndClienteId(login, clienteId);
         //NOT FOUND 404
         //Not Content 204
         LOGGER.info("DELETE USUARIO | Concluído | Usuário:" + login);
