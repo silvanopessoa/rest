@@ -1,15 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Web Application Deployment Descriptor -->
+<!-- REF: https://jcp.org/aboutJava/communityprocess/final/jsr340/ -->
+<!-- http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/index.html -->
+<!-- http://antoniogoncalves.org/2013/06/04/java-ee-7-deployment-descriptors/ -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="3.1">
 	
 	<display-name>Archetype Created Web Application</display-name>
-
-	<!-- Bootstrap the root application context as usual using ContextLoaderListener -->
+	
+	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<!-- |||||||||||||||||||||||||||||||||||| LISTENERS |||||||||||||||||||||||||||||||||||| -->
+	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	
+	<!-- 01 - SPRING FRAMEWORK -->
+	<!-- Bootstrap the root application context as usual using ContextLoaderListener. Inicializa e para o WebApplicationContext.-->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-
-
+	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<!-- |||||||||||||||||||||||||||||||||||| SERVLETS ||||||||||||||||||||||||||||||||||||| -->
+	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	
+	<!-- 01 - SPRING FRAMEWORK -->
+	<!-- Declare a Spring MVC DispatcherServlet as usual -->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- Configure DispatcherServlet to use AnnotationConfigWebApplicationContext
+            instead of the default XmlWebApplicationContext -->
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>
+                org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            </param-value>
+        </init-param>
+        <!-- Again, config locations must consist of one or more comma- or space-delimited
+            and fully-qualified @Configuration classes -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/*-config.xml</param-value>
+        </init-param>
+    </servlet>
+    
+    <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<!-- ||||||||||||||||||||||||||||||||| CONTEXTS PARAM |||||||||||||||||||||||||||||||||| -->
+	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	
+	<!-- 01 - SPRING FRAMEWORK -->
+    <!-- Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext
+        instead of the default XmlWebApplicationContext -->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>
+            org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        </param-value>
+    </context-param>
+    
+    <!-- 01 - SPRING FRAMEWORK -->
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/*-config.xml</param-value>
+	</context-param>
+	
+	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<!-- ||||||||||||||||||||||||||||||||||| DISPATCHER |||||||||||||||||||||||||||||||||||| -->
+	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	
+	<!-- 01 - SPRING FRAMEWORK -->
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/app/*</url-pattern>
+    </servlet-mapping>
 </web-app>
