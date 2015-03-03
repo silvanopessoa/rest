@@ -1,5 +1,6 @@
 package br.com.silvanopessoa.rest.api.controller;
 
+import static br.com.silvanopessoa.rest.api.base.PreconditionsRest.checkNotFound;
 import static br.com.silvanopessoa.rest.api.util.ResponseEntityUtil.createHeaders;
 import static org.apache.http.HttpHeaders.IF_MODIFIED_SINCE;
 import static org.springframework.http.HttpStatus.CREATED;
@@ -121,7 +122,7 @@ public class UsuarioController {
     public void deleteUsuario(@PathVariable("login") String login) {
         LOGGER.info("DELETE USUARIO | Iniciado | Usuário:" + login);
         String clienteId ="";//TODO: IMPLEMENTAR
-        service.findByLoginAndClienteId(login, clienteId);
+        checkNotFound(service.findByLoginAndClienteId(login, clienteId));
         //NOT FOUND 404
         //Not Content 204
         LOGGER.info("DELETE USUARIO | Concluído | Usuário:" + login);
