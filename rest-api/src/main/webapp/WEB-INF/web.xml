@@ -34,14 +34,6 @@
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<!-- Configure DispatcherServlet to use AnnotationConfigWebApplicationContext 
-			instead of the default XmlWebApplicationContext -->
-<!-- 		<init-param> -->
-<!-- 			<param-name>contextClass</param-name> -->
-<!-- 			<param-value> -->
-<!--                 org.springframework.web.context.support.AnnotationConfigWebApplicationContext -->
-<!--             </param-value> -->
-<!-- 		</init-param> -->
 		<!-- Again, config locations must consist of one or more comma- or space-delimited 
 			and fully-qualified @Configuration classes -->
 		<init-param>
@@ -53,16 +45,6 @@
 	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 	<!-- ||||||||||||||||||||||||||||||||| CONTEXTS PARAM |||||||||||||||||||||||||||||||||| -->
 	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-
-	<!-- 01 - SPRING FRAMEWORK -->
-	<!-- Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext 
-		instead of the default XmlWebApplicationContext -->
-<!-- 	<context-param> -->
-<!-- 		<param-name>contextClass</param-name> -->
-<!-- 		<param-value> -->
-<!--             org.springframework.web.context.support.AnnotationConfigWebApplicationContext -->
-<!--         </param-value> -->
-<!-- 	</context-param> -->
 
 	<!-- 01 - SPRING FRAMEWORK -->
 	<context-param>

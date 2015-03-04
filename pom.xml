@@ -10,7 +10,7 @@
 
 	<name>rest</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<!-- PROPRIEDADES -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,10 +24,10 @@
 			<name>Silvano Pessoa</name>
 		</developer>
 	</developers>
-	
+
 	<!-- DEPENDENCY MANAGEMENT -->
-	<!-- http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html  -->
-	<!-- http://www.infoq.com/news/2014/07/springio-platform  -->
+	<!-- http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html -->
+	<!-- http://www.infoq.com/news/2014/07/springio-platform -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -48,7 +48,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<modules>
 		<module>rest-model</module>
 		<module>rest-dto</module>
@@ -57,4 +57,20 @@
 		<module>rest-service</module>
 		<module>rest-api</module>
 	</modules>
+
+	<build>
+		<finalName>rest-api</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

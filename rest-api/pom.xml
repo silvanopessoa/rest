@@ -7,7 +7,6 @@
 		<groupId>br.com.silvanopessoa.rest</groupId>
 		<artifactId>rest</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-
 	</parent>
 	<artifactId>rest-api</artifactId>
 	<packaging>war</packaging>
@@ -46,19 +45,5 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
-	<build>
-		<finalName>rest-api</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+
 </project>
