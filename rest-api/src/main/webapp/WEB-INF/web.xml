@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!-- Web Application Deployment Descriptor -->
-<!-- REF: https://jcp.org/aboutJava/communityprocess/final/jsr340/ -->
-<!-- http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/index.html -->
-<!-- http://antoniogoncalves.org/2013/06/04/java-ee-7-deployment-descriptors/ -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="3.1">
+	
+	<!-- Web Application Deployment Descriptor -->
+	<!-- REF: https://jcp.org/aboutJava/communityprocess/final/jsr340/ -->
+	<!-- http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/index.html -->
+	<!-- http://antoniogoncalves.org/2013/06/04/java-ee-7-deployment-descriptors/ -->
 	
 	<display-name>Archetype Created Web Application</display-name>
 	
