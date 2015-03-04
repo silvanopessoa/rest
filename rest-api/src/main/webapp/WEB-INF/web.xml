@@ -72,6 +72,7 @@
 	<!-- 01 - SPRING FRAMEWORK -->
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/app/*</url-pattern>
+        <url-pattern>/</url-pattern>
+<!--         <url-pattern>/app/*</url-pattern> -->
     </servlet-mapping>
 </web-app>
