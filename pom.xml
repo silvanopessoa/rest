@@ -14,8 +14,14 @@
 	<!-- PROPRIEDADES -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<!-- 01 - SPRING FRAMEWORK -->
 		<!-- Spring - http://projects.spring.io/spring-framework/ -->
 		<spring-framework-version>4.1.5.RELEASE</spring-framework-version>
+		<!-- 02 - TESTES -->
+		<junit-version>4.12</junit-version>
+		<!-- 03 - CONFIGURACOES BASICAS-->
+		<java-version>1.7</java-version>
 	</properties>
 
 	<!-- DESENVOLVEDORES -->
@@ -30,6 +36,7 @@
 	<!-- http://www.infoq.com/news/2014/07/springio-platform -->
 	<dependencyManagement>
 		<dependencies>
+			<!-- 01 - SPRING FRAMEWORK -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-framework-bom</artifactId>
@@ -39,16 +46,19 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
+	
 	<dependencies>
+		<!-- 02 - TESTES -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>${junit-version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+	
+	<!-- 03 - CONFIGURACOES BASICAS-->
+	<!-- Modulo de menor dependencia para maior -->
 	<modules>
 		<module>rest-model</module>
 		<module>rest-dto</module>
@@ -61,14 +71,15 @@
 	<build>
 		<finalName>rest-api</finalName>
 		<plugins>
+			<!-- 03 - CONFIGURACOES BASICAS-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.0</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
