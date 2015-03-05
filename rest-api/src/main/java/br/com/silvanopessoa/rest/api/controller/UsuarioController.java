@@ -10,6 +10,7 @@ import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -120,6 +121,7 @@ public class UsuarioController {
      * @param login o(a) login
      */
     @ResponseStatus(NO_CONTENT)
+    @RequestMapping(value = "/{login}", method = DELETE, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public void deleteUsuario(@PathVariable("login") String login) {
         LOGGER.info("DELETE USUARIO | Iniciado | Usuário:" + login);
         String clienteId ="";//TODO: IMPLEMENTAR

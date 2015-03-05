@@ -1,8 +1,6 @@
 package br.com.silvanopessoa.rest.api.base;
 
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-
-import org.springframework.dao.EmptyResultDataAccessException;
+import br.com.silvanopessoa.rest.api.exception.ResourceNotFoundException;
 
 /**
  * O(a) Class PreconditionsRest.
@@ -21,7 +19,7 @@ public class PreconditionsRest {
      */
     public static <T> T checkNotFound(T reference) {
         if (reference == null) {
-            throw new EmptyResultDataAccessException(NOT_FOUND.getReasonPhrase(), 1);
+            throw new ResourceNotFoundException();
         }
         return reference;
     }

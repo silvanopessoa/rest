@@ -20,7 +20,7 @@
 		<spring-framework-version>4.1.5.RELEASE</spring-framework-version>
 		<!-- 02 - TESTES -->
 		<junit-version>4.12</junit-version>
-		<!-- 03 - CONFIGURACOES BASICAS-->
+		<!-- 03 - CONFIGURACOES BASICAS -->
 		<java-version>1.7</java-version>
 	</properties>
 
@@ -57,7 +57,7 @@
 		</dependency>
 	</dependencies>
 	
-	<!-- 03 - CONFIGURACOES BASICAS-->
+	<!-- 03 - CONFIGURACOES BASICAS -->
 	<!-- Modulo de menor dependencia para maior -->
 	<modules>
 		<module>rest-model</module>
@@ -71,7 +71,7 @@
 	<build>
 		<finalName>rest-api</finalName>
 		<plugins>
-			<!-- 03 - CONFIGURACOES BASICAS-->
+			<!-- 03 - CONFIGURACOES BASICAS -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
