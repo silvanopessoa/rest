@@ -5,13 +5,15 @@ import static br.com.silvanopessoa.rest.api.util.ResponseEntityUtil.createHeader
 import static org.apache.http.HttpHeaders.IF_MODIFIED_SINCE;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
+import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.silvanopessoa.model.usuario.v1.UsuarioType;
 import br.com.silvanopessoa.rest.api.model.Usuario;
 import br.com.silvanopessoa.rest.api.validation.UsuarioValidator;
 import br.com.silvanopessoa.rest.service.UsuarioService;
@@ -141,11 +144,14 @@ public class UsuarioController {
      * @return o(a) usuario
      */
     @RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
-    public ResponseEntity<Usuario> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
+    public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
         LOGGER.info("GET USUARIO | Iniciado | Obtem o usuário. Indenticador do usuário:" + login);
         //TODO: Validar data de alteração.
+        UsuarioType usuario = new UsuarioType();
+        usuario.setLogin("silvanopessoa@beta");
+        usuario.setDataAlteracao(DateTime.now().minusHours(1));
         LOGGER.info("GET USUARIO | Concluido | Obtem o usuário.");
-        return null;
+        return new ResponseEntity<>(usuario,OK);
     }
 
 

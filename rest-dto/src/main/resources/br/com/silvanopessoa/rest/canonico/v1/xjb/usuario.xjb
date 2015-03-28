@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jxb:bindings 
+	jxb:extensionbindingprefixes="annox" 
+	version="2.0" 
+	xmlns:annox="http://annox.dev.java.net" 
+	xmlns:jxb="http://java.sun.com/xml/ns/jaxb" 
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://java.sun.com/xml/ns/jaxb" 
+	xsi:schemalocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb http://annox.dev.java.net">
+	
+	<jxb:bindings schemaLocation="../../../../../../../../../../../../canonico/src/main/resources/br/com/silvanopessoa/rest/canonico/v1/UsuarioDomain.xsd"
+		node="/xs:schema">
+		<jxb:bindings node="xs:complexType[@name='UsuarioType']">
+			<annox:annotate>
+				<annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="UsuarioType" />
+			</annox:annotate>
+		</jxb:bindings>
+	</jxb:bindings>
+
+</jxb:bindings>
+
+

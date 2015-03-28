@@ -22,6 +22,10 @@
 		<junit-version>4.12</junit-version>
 		<!-- 03 - CONFIGURACOES BASICAS -->
 		<java-version>1.7</java-version>
+		<!-- 04 - XSD para Object Java -->
+		<jaxb2-maven-plugin-version>1.6</jaxb2-maven-plugin-version>
+		<schema-directory-config>${basedir}/../../canonico/src/main/resources/br/com/silvanopessoa/rest/canonico/v1</schema-directory-config>
+		<binding-directory-config>src/main/resources/br/com/silvanopessoa/rest/canonico/v1/xjb</binding-directory-config>
 	</properties>
 
 	<!-- DESENVOLVEDORES -->

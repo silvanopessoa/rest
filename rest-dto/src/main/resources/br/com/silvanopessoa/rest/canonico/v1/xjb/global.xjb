@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings 
+	version="2.0" 
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" 
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	jaxb:extensionBindingPrefixes="xjc">
+
+	<jaxb:globalBindings>
+		<xjc:simple />
+		<xjc:serializable uid="-1" />
+		<xjc:javaType name="org.joda.time.DateTime" xmlType="xs:dateTime" adapter="br.com.silvanopessoa.rest.dto.adapters.DateTimeXmlAdapter" />
+		<xjc:javaType name="org.joda.time.LocalDate" xmlType="xs:date" adapter="br.com.silvanopessoa.rest.dto.adapters.LocalDateXmlAdapter" />
+	</jaxb:globalBindings>
+</jaxb:bindings>
