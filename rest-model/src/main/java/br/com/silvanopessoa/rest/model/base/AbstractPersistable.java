@@ -1,4 +1,4 @@
-package br.com.silvanopessoa.rest.api.model.base;
+package br.com.silvanopessoa.rest.model.base;
 
 import java.io.Serializable;
 

@@ -1,10 +1,10 @@
-package br.com.silvanopessoa.rest.api.model;
+package br.com.silvanopessoa.rest.model;
 
 import javax.persistence.Entity;
 
 import org.joda.time.DateTime;
 
-import br.com.silvanopessoa.rest.api.model.base.AbstractPersistable;
+import br.com.silvanopessoa.rest.model.base.AbstractPersistable;
 
 /**
  * O(a) Class Usuario.

@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.silvanopessoa.model.usuario.v1.UsuarioType;
-import br.com.silvanopessoa.rest.api.model.Usuario;
 import br.com.silvanopessoa.rest.api.validation.UsuarioValidator;
+import br.com.silvanopessoa.rest.model.Usuario;
 import br.com.silvanopessoa.rest.service.UsuarioService;
 
 /**
@@ -117,7 +117,7 @@ public class UsuarioController {
      * Exclui o(a) usuario.
      * 
      * Resposta: 204 (No Content) if the action has been enacted but the response does not include an entity.
-     * Resposta: 404
+     * Resposta: 404 (Not found)
      * 
      * @author silvano.pessoa
      * @see http://restpatterns.org/HTTP_Methods/DELETE
@@ -128,9 +128,9 @@ public class UsuarioController {
     public void deleteUsuario(@PathVariable("login") String login) {
         LOGGER.info("DELETE USUARIO | Iniciado | Usuário:" + login);
         String clienteId ="";//TODO: IMPLEMENTAR
+        validator.checkDeleteRequest(login, clienteId);
         checkNotFound(service.findByLoginAndClienteId(login, clienteId));
-        //NOT FOUND 404
-        //Not Content 204
+        service.deleteUsuario(login, clienteId);
         LOGGER.info("DELETE USUARIO | Concluído | Usuário:" + login);
     }
     
@@ -146,10 +146,10 @@ public class UsuarioController {
     @RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
         LOGGER.info("GET USUARIO | Iniciado | Obtem o usuário. Indenticador do usuário:" + login);
-        //TODO: Validar data de alteração.
-        UsuarioType usuario = new UsuarioType();
-        usuario.setLogin("silvanopessoa@beta");
-        usuario.setDataAlteracao(DateTime.now().minusHours(1));
+        String clienteId ="";
+        validator.checkGetRequest(login, dataAlteracao, clienteId);
+        service.getUsuario(login, dataAlteracao, clienteId);
+
         LOGGER.info("GET USUARIO | Concluido | Obtem o usuário.");
         return new ResponseEntity<>(usuario,OK);
     }

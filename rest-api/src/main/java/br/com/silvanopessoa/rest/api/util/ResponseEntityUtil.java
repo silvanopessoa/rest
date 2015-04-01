@@ -6,7 +6,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import org.springframework.http.HttpHeaders;
 
 import br.com.silvanopessoa.rest.api.controller.UsuarioController;
-import br.com.silvanopessoa.rest.api.model.Usuario;
+import br.com.silvanopessoa.rest.model.Usuario;
 
 public class ResponseEntityUtil {
 

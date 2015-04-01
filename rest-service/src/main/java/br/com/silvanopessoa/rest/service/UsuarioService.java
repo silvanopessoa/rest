@@ -2,7 +2,7 @@ package br.com.silvanopessoa.rest.service;
 
 import org.springframework.stereotype.Service;
 
-import br.com.silvanopessoa.rest.api.model.Usuario;
+import br.com.silvanopessoa.rest.model.Usuario;
 
 /**
  * O(a) Class UsuarioService.
@@ -44,6 +44,29 @@ public class UsuarioService {
      * @return the usuario
      */
     public Usuario updateUsuario(String login, Usuario usuario, String clienteId) {
+        return null;
+    }
+    
+    /**
+     * Delete usuario.
+     *
+     * @param login o(a) login
+     * @param clienteId o(a) cliente id
+     */
+    public void deleteUsuario(String login, String clienteId){
+        
+    }
+
+    /**
+     * Obtém o valor do(a)(s) usuario.
+     *
+     * @author silvano.pessoa
+     * @param login o(a) login
+     * @param dataAlteracao o(a) data alteracao
+     * @param clienteId o(a) cliente id
+     * @return o(a) usuario
+     */
+    public Usuario getUsuario(String login, String dataAlteracao, String clienteId) {
         return null;
     }
 }
