@@ -87,11 +87,16 @@
 						<artifactId>jaxb2-basics-annotate</artifactId>
 						<version>1.0.1</version>
 					</dependency>
+					<dependency>
+						<groupId>org.jvnet.jaxb2_commons</groupId>
+						<artifactId>jaxb2-value-constructor</artifactId>
+						<version>3.0</version>
+					</dependency>
 				</dependencies>
 				<configuration>
 					<schemaDirectory>${schema-directory-config}</schemaDirectory>
 					<bindingDirectory>${binding-directory-config}</bindingDirectory>
-					<arguments>-extension -Xannotate</arguments>
+					<arguments>-extension -Xannotate -Xvalue-constructor</arguments>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
