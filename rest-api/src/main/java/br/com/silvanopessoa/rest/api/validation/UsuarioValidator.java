@@ -1,5 +1,7 @@
 package br.com.silvanopessoa.rest.api.validation;
 
+import static br.com.silvanopessoa.rest.api.base.PreconditionsRest.checkNotFound;
+
 import org.springframework.stereotype.Component;
 
 import br.com.silvanopessoa.rest.model.Usuario;
@@ -43,12 +45,22 @@ public class UsuarioValidator{
     }
     
     /**
-     * Check get request.
+     * Check before get request.
      *
      * @param login o(a) login
      * @param dataAlteracao o(a) data alteracao
+     * @param clienteId o(a) cliente id
      */
-    public void checkGetRequest(String login, String dataAlteracao, String clienteId){
+    public void checkBeforeGetRequest(String login, String dataAlteracao, String clienteId){
         
+    }
+    
+    /**
+     * Check after get request.
+     *
+     * @param usuario o(a) usuario
+     */
+    public void checkAfterGetRequest(Usuario usuario){
+        checkNotFound(usuario);
     }
 }

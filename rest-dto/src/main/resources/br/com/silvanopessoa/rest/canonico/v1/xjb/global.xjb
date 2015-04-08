@@ -9,6 +9,7 @@
 	<jaxb:globalBindings>
 		<xjc:simple />
 		<xjc:serializable uid="-1" />
+		<xjc:superClass name="org.springframework.hateoas.ResourceSupport"/>
 		<xjc:javaType name="org.joda.time.DateTime" xmlType="xs:dateTime" adapter="br.com.silvanopessoa.rest.dto.adapters.DateTimeXmlAdapter" />
 		<xjc:javaType name="org.joda.time.LocalDate" xmlType="xs:date" adapter="br.com.silvanopessoa.rest.dto.adapters.LocalDateXmlAdapter" />
 	</jaxb:globalBindings>

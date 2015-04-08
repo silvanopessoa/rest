@@ -13,7 +13,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
-import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.silvanopessoa.model.usuario.v1.UsuarioType;
 import br.com.silvanopessoa.rest.api.validation.UsuarioValidator;
 import br.com.silvanopessoa.rest.model.Usuario;
+import br.com.silvanopessoa.rest.model.transformation.UsuarioResourceAssembler;
 import br.com.silvanopessoa.rest.service.UsuarioService;
 
 /**
@@ -51,6 +51,9 @@ public class UsuarioController {
     /** O(a) service. */
     @Autowired
     private UsuarioService service;
+    
+    @Autowired
+    private UsuarioResourceAssembler assembler;
 
     /**
      * Salva o(a) usuario. 
@@ -147,11 +150,11 @@ public class UsuarioController {
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
         LOGGER.info("GET USUARIO | Iniciado | Obtem o usuário. Indenticador do usuário:" + login);
         String clienteId ="";
-        validator.checkGetRequest(login, dataAlteracao, clienteId);
-        service.getUsuario(login, dataAlteracao, clienteId);
-
-        LOGGER.info("GET USUARIO | Concluido | Obtem o usuário.");
-        return new ResponseEntity<>(usuario,OK);
+        validator.checkBeforeGetRequest(login, dataAlteracao, clienteId);
+        Usuario usuario = service.getUsuario(login, dataAlteracao, clienteId);
+        validator.checkAfterGetRequest(usuario);
+        LOGGER.info("GET USUARIO | Concluído | Obtem o usuário.");
+        return new ResponseEntity<>(assembler.toResource(usuario),OK);
     }
 
 
