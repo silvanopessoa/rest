@@ -67,6 +67,8 @@ public class UsuarioService {
      * @return o(a) usuario
      */
     public Usuario getUsuario(String login, String dataAlteracao, String clienteId) {
-        return null;
+        Usuario usuario = new Usuario();
+        usuario.setLogin("silvano@web");
+        return usuario;
     }
 }
