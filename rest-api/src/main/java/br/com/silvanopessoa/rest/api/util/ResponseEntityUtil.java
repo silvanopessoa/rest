@@ -23,7 +23,7 @@ public class ResponseEntityUtil {
     public static HttpHeaders createHeaders(Usuario usuario){
         HttpHeaders headers = new HttpHeaders();
         if (usuario != null) {
-            headers.setLocation(linkTo(methodOn(UsuarioController.class).getUsuario(usuario.getLogin(), null)).toUri());
+            headers.setLocation(linkTo(methodOn(UsuarioController.class).getUsuario(usuario.getId(), null)).toUri());
         }
         return headers;
     }

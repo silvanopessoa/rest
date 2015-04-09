@@ -10,6 +10,7 @@ import javax.persistence.MappedSuperclass;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.springframework.hateoas.Identifiable;
 
 /**
  * Classe base para as entidades.
@@ -20,7 +21,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * @since 28/10/2014 - 20:40:45
  */
 @MappedSuperclass
-public abstract class AbstractPersistable<T extends Serializable> implements Persistable<T> {
+public abstract class AbstractPersistable<T extends Serializable> implements Persistable<T>,Identifiable<T> {
 
     /**************************************************************/
     /************************* ATRIBUTOS **************************/
