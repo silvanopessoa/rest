@@ -51,7 +51,7 @@ public class UsuarioValidator{
      * @param dataAlteracao o(a) data alteracao
      * @param clienteId o(a) cliente id
      */
-    public void checkBeforeGetRequest(String login, String dataAlteracao, String clienteId){
+    public void checkGetRequest(String login, String dataAlteracao, String clienteId){
         
     }
     
@@ -60,7 +60,7 @@ public class UsuarioValidator{
      *
      * @param usuario o(a) usuario
      */
-    public void checkAfterGetRequest(Usuario usuario){
+    public void checkGetResponse(Usuario usuario){
         checkNotFound(usuario);
     }
 }

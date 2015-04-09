@@ -26,8 +26,14 @@ public class UsuarioHttpHeaders {
     public HttpHeaders createHeaders(Usuario usuario){
         HttpHeaders headers = new HttpHeaders();
         if (usuario != null) {
-            headers.setLocation(linkTo(methodOn(UsuarioController.class).getUsuario(usuario.getId(), null)).toUri());
+        	if(usuario.getId()!=null){
+        		headers.setLocation(linkTo(methodOn(UsuarioController.class).getUsuario(usuario.getId(), null)).toUri());
+        	}
+        	if(usuario.getDataAlteracao()!=null){
+        		headers.setLastModified(usuario.getDataAlteracao().getMillis());
+        	}
         }
+        
         return headers;
     }
     

@@ -152,9 +152,9 @@ public class UsuarioController {
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
         LOGGER.info("GET USUARIO | Iniciado | Obtem o usuário. Indenticador do usuário:" + login);
         String clienteId ="";
-        validator.checkBeforeGetRequest(login, dataAlteracao, clienteId);
+        validator.checkGetRequest(login, dataAlteracao, clienteId);
         Usuario usuario = service.getUsuario(login, dataAlteracao, clienteId);
-        validator.checkAfterGetRequest(usuario);
+        validator.checkGetResponse(usuario);
         LOGGER.info("GET USUARIO | Concluído | Obtem o usuário.");
         return new ResponseEntity<>(assembler.toResource(usuario),OK);
     }
