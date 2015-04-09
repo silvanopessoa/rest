@@ -1,7 +1,6 @@
 package br.com.silvanopessoa.rest.api.controller;
 
 import static br.com.silvanopessoa.rest.api.base.PreconditionsRest.checkNotFound;
-import static br.com.silvanopessoa.rest.api.controller.UsuarioHttpHeaders.createHeaders;
 import static org.apache.http.HttpHeaders.IF_MODIFIED_SINCE;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
