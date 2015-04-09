@@ -1,7 +1,7 @@
 package br.com.silvanopessoa.rest.api.controller;
 
 import static br.com.silvanopessoa.rest.api.base.PreconditionsRest.checkNotFound;
-import static br.com.silvanopessoa.rest.api.util.ResponseEntityUtil.createHeaders;
+import static br.com.silvanopessoa.rest.api.controller.UsuarioHttpHeaders.createHeaders;
 import static org.apache.http.HttpHeaders.IF_MODIFIED_SINCE;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
@@ -54,6 +54,9 @@ public class UsuarioController {
     
     @Autowired
     private UsuarioResourceAssembler assembler;
+    
+    @Autowired
+    private UsuarioHttpHeaders header;
 
     /**
      * Salva o(a) usuario. 
@@ -74,7 +77,7 @@ public class UsuarioController {
         LOGGER.info("POST USUARIO | Iniciado | Salvar usuário. Entity:" + usuario);
         validator.checkCreateRequest(usuario);
         LOGGER.info("POST USUARIO | Concluido | Salvar usuário." + usuario);
-        return new ResponseEntity<Void>(createHeaders(usuario), CREATED);
+        return new ResponseEntity<Void>(header.createHeaders(usuario), CREATED);
     }
     
     /**
@@ -110,7 +113,7 @@ public class UsuarioController {
         }else{
             LOGGER.info("PUT USUARIO | O usuário será atualizado. Usuário: "+login+" Entity:" + usuario);
             Usuario usuarioAlterado = service.updateUsuario(login, usuario, clienteId);
-            responseEntity = new ResponseEntity<Void>(createHeaders(usuarioAlterado), NO_CONTENT);//TODO: UPDATE TEM LOCATION?
+            responseEntity = new ResponseEntity<Void>(header.updateHeaders(usuarioAlterado), NO_CONTENT);//TODO: UPDATE TEM LOCATION?
         }
         return responseEntity;
     }
