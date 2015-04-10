@@ -72,11 +72,13 @@ public class UsuarioController {
      * @see http://restpatterns.org/HTTP_Methods/POST
      */
     @RequestMapping(method = POST, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
-    public ResponseEntity<Void> createUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity<Void> createUsuario(@RequestBody UsuarioType usuario) {
         LOGGER.info("POST USUARIO | Iniciado | Salvar usuário. Entity:" + usuario);
         validator.checkCreateRequest(usuario);
+        Usuario usuarioEntity = assembler.toEntity(usuario);
+        service.salvarUsuario(usuarioEntity);
         LOGGER.info("POST USUARIO | Concluido | Salvar usuário." + usuario);
-        return new ResponseEntity<Void>(header.createHeaders(usuario), CREATED);
+        return new ResponseEntity<Void>(header.createHeaders(usuarioEntity), CREATED);
     }
     
     /**
@@ -87,7 +89,7 @@ public class UsuarioController {
      * @see http://restpatterns.org/HTTP_Methods/PUT
      */
     @RequestMapping(method=PUT, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
-    public ResponseEntity<Void> updateUsuario(@PathVariable("login") String login, @RequestBody Usuario usuario){
+    public ResponseEntity<Void> updateUsuario(@PathVariable("login") String login, @RequestBody UsuarioType usuario){
         LOGGER.info("PUT USUARIO | Iniciado | Alterar usuário. Usuário: "+login+" Entity:" + usuario);
         String clienteId ="";//TODO: IMPLEMENTAR
         validator.checkUpdateRequest(login, usuario);
@@ -104,14 +106,15 @@ public class UsuarioController {
      * @param clienteId o(a) cliente id
      * @return the response entity
      */
-    protected ResponseEntity<Void> createUsuarioOrUpdateUsuario(String login, Usuario usuario, String clienteId){
+    protected ResponseEntity<Void> createUsuarioOrUpdateUsuario(String login, UsuarioType usuario, String clienteId){
         ResponseEntity<Void> responseEntity;
         if(service.isNewUsuario(login,clienteId)){
             LOGGER.info("PUT USUARIO | O usuário é novo e será criado. Usuário: "+login+" Entity:" + usuario);
             responseEntity = this.createUsuario(usuario);
         }else{
             LOGGER.info("PUT USUARIO | O usuário será atualizado. Usuário: "+login+" Entity:" + usuario);
-            Usuario usuarioAlterado = service.updateUsuario(login, usuario, clienteId);
+            Usuario usuarioEntity = assembler.toEntity(usuario);
+            Usuario usuarioAlterado = service.updateUsuario(login, usuarioEntity, clienteId);
             responseEntity = new ResponseEntity<Void>(header.updateHeaders(usuarioAlterado), NO_CONTENT);//TODO: UPDATE TEM LOCATION?
         }
         return responseEntity;

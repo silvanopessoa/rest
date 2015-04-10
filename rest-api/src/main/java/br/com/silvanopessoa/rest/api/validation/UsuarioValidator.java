@@ -4,6 +4,7 @@ import static br.com.silvanopessoa.rest.api.base.PreconditionsRest.checkNotFound
 
 import org.springframework.stereotype.Component;
 
+import br.com.silvanopessoa.model.usuario.v1.UsuarioType;
 import br.com.silvanopessoa.rest.model.Usuario;
 
 /**
@@ -20,7 +21,7 @@ public class UsuarioValidator{
      *
      * @param usuario o(a) usuario
      */
-    public void checkCreateRequest(Usuario usuario){
+    public void checkCreateRequest(UsuarioType usuario){
         
     }
     
@@ -30,7 +31,7 @@ public class UsuarioValidator{
      * @param login o(a) login
      * @param usuario o(a) usuario
      */
-    public void checkUpdateRequest(String login, Usuario usuario){
+    public void checkUpdateRequest(String login, UsuarioType usuario){
         
     }
     

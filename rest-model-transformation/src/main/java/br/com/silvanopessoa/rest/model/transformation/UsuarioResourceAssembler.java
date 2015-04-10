@@ -1,10 +1,10 @@
 package br.com.silvanopessoa.rest.model.transformation;
 
+import org.joda.time.DateTime;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
-
 import br.com.silvanopessoa.model.usuario.v1.UsuarioType;
 import br.com.silvanopessoa.rest.model.Usuario;
 
@@ -41,6 +41,13 @@ public class UsuarioResourceAssembler extends ResourceAssemblerSupport<Usuario, 
         Link link = linkTo(this.controllerClass).slash(entity).withSelfRel();
         usuarioType.add(link);
         return usuarioType;
+    }
+    
+    public Usuario toEntity(UsuarioType resource) {
+    	Usuario usuario = new Usuario();
+    	usuario.setDataAlteracao(new DateTime());
+    	usuario.setId(resource.getLogin());
+		return usuario;
     }
 
 }

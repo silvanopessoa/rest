@@ -71,4 +71,8 @@ public class UsuarioService {
         usuario.setId("silvano@web");
         return usuario;
     }
+
+	public void salvarUsuario(Usuario usuarioEntity) {
+		
+	}
 }
