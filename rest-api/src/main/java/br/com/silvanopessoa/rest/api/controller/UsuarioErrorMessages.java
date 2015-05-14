@@ -28,8 +28,8 @@ public class UsuarioErrorMessages {
 	/**
 	 * Delete check not found message.
 	 *
-	 * @param login the login
-	 * @return the error message
+	 * @param login O(a)(s) login
+	 * @return O(a)(s) error message
 	 */
 	public ErrorMessage deleteCheckNotFoundMessage(String login){
 	    ErrorMessage message = new ErrorMessage();
