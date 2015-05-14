@@ -1,6 +1,7 @@
 package br.com.silvanopessoa.rest.api.base;
 
 import br.com.silvanopessoa.rest.api.exception.ResourceNotFoundException;
+import cz.jirutka.spring.exhandler.messages.ErrorMessage;
 
 /**
  * O(a) Class PreconditionsRest.
@@ -24,4 +25,10 @@ public class PreconditionsRest {
         return reference;
     }
 
+    public static <T> T checkNotFound(T reference, ErrorMessage message) {
+        if (reference == null) {
+            throw new ResourceNotFoundException(message);
+        }
+        return reference;
+    }
 }

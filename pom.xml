@@ -26,6 +26,10 @@
 		<jaxb2-maven-plugin-version>1.6</jaxb2-maven-plugin-version>
 		<schema-directory-config>${basedir}/../../canonico/src/main/resources/br/com/silvanopessoa/rest/canonico/v1</schema-directory-config>
 		<binding-directory-config>src/main/resources/br/com/silvanopessoa/rest/canonico/v1/xjb</binding-directory-config>
+		<!-- 05 - Tratamento de exceptions -->
+		<!-- http://tools.ietf.org/html/draft-nottingham-http-problem-06#section-3 -->
+		<!-- https://github.com/jirutka/spring-rest-exception-handler -->
+		<spring-rest-exception-handler-version>1.0.3</spring-rest-exception-handler-version>
 	</properties>
 
 	<!-- DESENVOLVEDORES -->

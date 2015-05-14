@@ -56,6 +56,9 @@ public class UsuarioController {
     
     @Autowired
     private UsuarioHttpHeaders header;
+    
+    @Autowired
+    private UsuarioErrorMessages msg;
 
     /**
      * Salva o(a) usuario. 
@@ -137,7 +140,7 @@ public class UsuarioController {
         LOGGER.info("DELETE USUARIO | Iniciado | Usuário:" + login);
         String clienteId ="";//TODO: IMPLEMENTAR
         validator.checkDeleteRequest(login, clienteId);
-        checkNotFound(service.findByLoginAndClienteId(login, clienteId));
+        checkNotFound(service.findByLoginAndClienteId(login, clienteId),msg.deleteCheckNotFoundMessage(login));
         service.deleteUsuario(login, clienteId);
         LOGGER.info("DELETE USUARIO | Concluído | Usuário:" + login);
     }
