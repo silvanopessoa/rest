@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 import cz.jirutka.spring.exhandler.messages.ErrorMessage;
 
 /**
- * The Class UsuarioErrorMessages.
+ * A classe UsuarioErrorMessages é responsável por gerar mensagens de erros.
  */
 @Component
 public class UsuarioErrorMessages {
