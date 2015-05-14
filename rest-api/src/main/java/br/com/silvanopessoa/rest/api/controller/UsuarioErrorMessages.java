@@ -1,3 +1,15 @@
+/******************************************************************************
+ * Produto: REST                                                              *
+ *                                                                            *
+ *    History:                                                                *
+ *          Data        Programador              Tarefa                       *
+ *          ----------  -----------------        -----------------------------*
+ *   Autor  14/05/2015  silvano.pessoa          Classe criada.                *
+ *                                                                            *
+ *   Comments:                                                                *
+ *                                                                            *
+ *                                                                            *
+ *****************************************************************************/
 package br.com.silvanopessoa.rest.api.controller;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
@@ -7,9 +19,18 @@ import org.springframework.stereotype.Component;
 
 import cz.jirutka.spring.exhandler.messages.ErrorMessage;
 
+/**
+ * The Class UsuarioErrorMessages.
+ */
 @Component
 public class UsuarioErrorMessages {
 
+	/**
+	 * Delete check not found message.
+	 *
+	 * @param login the login
+	 * @return the error message
+	 */
 	public ErrorMessage deleteCheckNotFoundMessage(String login){
 	    ErrorMessage message = new ErrorMessage();
 	    message.setType(null);
