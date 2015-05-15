@@ -1,3 +1,15 @@
+/******************************************************************************
+ * Produto: REST                                                              *
+ *                                                                            *
+ *    History:                                                                *
+ *          Data        Programador              Tarefa                       *
+ *          ----------  -----------------        -----------------------------*
+ *   Autor  14/05/2015  silvano.pessoa          Classe criada.                *
+ *                                                                            *
+ *   Comments:                                                                *
+ *                                                                            *
+ *                                                                            *
+ *****************************************************************************/
 package br.com.silvanopessoa.rest.api.controller;
 
 import static br.com.silvanopessoa.rest.api.base.PreconditionsRest.checkNotFound;
@@ -51,12 +63,15 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
     
+    /** O(a)(s) assembler. */
     @Autowired
     private UsuarioResourceAssembler assembler;
     
+    /** O(a)(s) header. */
     @Autowired
     private UsuarioHttpHeaders header;
     
+    /** O(a)(s) msg. */
     @Autowired
     private UsuarioErrorMessages msg;
 
@@ -164,6 +179,5 @@ public class UsuarioController {
         LOGGER.info("GET USUARIO | Concluído | Obtem o usuário.");
         return new ResponseEntity<>(assembler.toResource(usuario),OK);
     }
-
 
 }
