@@ -78,6 +78,15 @@ public class ResourceBusinessException extends RuntimeException{
 	}
 	
 	/**
+	 * Instancia um novo(a) resource business exception.
+	 *
+	 * @param errorMessage O(a)(s) error message
+	 */
+	public ResourceBusinessException(ErrorMessage errorMessage){
+		this.errorMessage = errorMessage;
+	}
+	
+	/**
 	 * Obtém o valor do(a)(s) error message.
 	 *
 	 * @return O(a)(s) error message

@@ -12,6 +12,7 @@
  *****************************************************************************/
 package br.com.silvanopessoa.rest.api.base;
 
+import br.com.silvanopessoa.rest.api.exception.ResourceBusinessException;
 import br.com.silvanopessoa.rest.api.exception.ResourceNotFoundException;
 import cz.jirutka.spring.exhandler.messages.ErrorMessage;
 
@@ -50,5 +51,11 @@ public class PreconditionsRest {
             throw new ResourceNotFoundException(message);
         }
         return reference;
+    }
+    
+    public static void checkCondition(boolean condition, ErrorMessage message){
+        if (!condition) {
+            throw new ResourceBusinessException(message);
+        }
     }
 }
