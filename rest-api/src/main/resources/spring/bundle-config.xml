@@ -14,4 +14,6 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="messageBundleUtil" class="br.com.silvanopessoa.rest.api.messages.MessageBundleUtil"/>
 </beans>
