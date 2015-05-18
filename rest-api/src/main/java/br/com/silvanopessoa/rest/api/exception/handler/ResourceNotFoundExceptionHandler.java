@@ -30,7 +30,6 @@ import cz.jirutka.spring.exhandler.handlers.ErrorMessageRestExceptionHandler;
 import cz.jirutka.spring.exhandler.messages.ErrorMessage;
 import cz.jirutka.spring.exhandler.messages.ValidationErrorMessage;
 
-// TODO: Auto-generated Javadoc
 /**
  * O(a) Class ResourceNotFoundException.
  *
