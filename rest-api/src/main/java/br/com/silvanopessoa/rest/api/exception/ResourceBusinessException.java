@@ -19,7 +19,7 @@ import cz.jirutka.spring.exhandler.messages.ErrorMessage;
  * 
  * Info: http://www.restpatterns.org/HTTP_Status_Codes/422_-_Unprocessable_Entity
  * Config: exception-handler-config.xml
- * Handler: BusinessExceptionHandler.java
+ * Handler: ResourceBusinessExceptionHandler.java
  * 
  */
 public class ResourceBusinessException extends RuntimeException{

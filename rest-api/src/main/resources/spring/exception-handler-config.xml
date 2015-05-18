@@ -29,8 +29,8 @@
 				<entry key="br.com.silvanopessoa.rest.api.exception.ResourceNotFoundException">
 					<bean class="br.com.silvanopessoa.rest.api.exception.handler.ResourceNotFoundExceptionHandler"/>
 				</entry>
-				<entry key="br.com.silvanopessoa.rest.api.exception.BusinessException">
-					<bean class="br.com.silvanopessoa.rest.api.exception.handler.BusinessExceptionHandler"/>
+				<entry key="br.com.silvanopessoa.rest.api.exception.ResourceBusinessException">
+					<bean class="br.com.silvanopessoa.rest.api.exception.handler.ResourceBusinessExceptionHandler"/>
 				</entry>
 			</map>
 		</property>
