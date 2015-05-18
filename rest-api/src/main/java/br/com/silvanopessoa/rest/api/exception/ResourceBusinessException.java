@@ -22,7 +22,7 @@ import cz.jirutka.spring.exhandler.messages.ErrorMessage;
  * Handler: BusinessExceptionHandler.java
  * 
  */
-public class BusinessException extends RuntimeException{
+public class ResourceBusinessException extends RuntimeException{
 
 	/** A Constante serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -33,7 +33,7 @@ public class BusinessException extends RuntimeException{
 	/**
 	 * Instancia um novo(a) business exception.
 	 */
-	public BusinessException() {
+	public ResourceBusinessException() {
 		super();
 	}
 
@@ -45,7 +45,7 @@ public class BusinessException extends RuntimeException{
 	 * @param enableSuppression O(a)(s) enable suppression
 	 * @param writableStackTrace O(a)(s) writable stack trace
 	 */
-	public BusinessException(String message, Throwable cause,boolean enableSuppression, boolean writableStackTrace) {
+	public ResourceBusinessException(String message, Throwable cause,boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}
 
@@ -55,7 +55,7 @@ public class BusinessException extends RuntimeException{
 	 * @param message O(a)(s) message
 	 * @param cause O(a)(s) cause
 	 */
-	public BusinessException(String message, Throwable cause) {
+	public ResourceBusinessException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
@@ -64,7 +64,7 @@ public class BusinessException extends RuntimeException{
 	 *
 	 * @param message O(a)(s) message
 	 */
-	public BusinessException(String message) {
+	public ResourceBusinessException(String message) {
 		super(message);
 	}
 
@@ -73,7 +73,7 @@ public class BusinessException extends RuntimeException{
 	 *
 	 * @param cause O(a)(s) cause
 	 */
-	public BusinessException(Throwable cause) {
+	public ResourceBusinessException(Throwable cause) {
 		super(cause);
 	}
 	

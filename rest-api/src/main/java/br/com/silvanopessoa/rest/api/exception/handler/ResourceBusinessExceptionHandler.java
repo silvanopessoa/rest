@@ -25,7 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 
-import br.com.silvanopessoa.rest.api.exception.BusinessException;
+import br.com.silvanopessoa.rest.api.exception.ResourceBusinessException;
 import cz.jirutka.spring.exhandler.handlers.ErrorMessageRestExceptionHandler;
 import cz.jirutka.spring.exhandler.messages.ErrorMessage;
 import cz.jirutka.spring.exhandler.messages.ValidationErrorMessage;
@@ -33,10 +33,10 @@ import cz.jirutka.spring.exhandler.messages.ValidationErrorMessage;
 /**
  * The Class BusinessExceptionHandler.
  */
-public class BusinessExceptionHandler extends ErrorMessageRestExceptionHandler<BusinessException>{
+public class ResourceBusinessExceptionHandler extends ErrorMessageRestExceptionHandler<ResourceBusinessException>{
 
 	/** LOG. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(BusinessExceptionHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ResourceBusinessExceptionHandler.class);
 
     /** O(a)(s) error message. */
     private ErrorMessage errorMessage;
@@ -44,7 +44,7 @@ public class BusinessExceptionHandler extends ErrorMessageRestExceptionHandler<B
 	/**
 	 * Instancia um novo(a) resource not found exception handler.
 	 */
-	public BusinessExceptionHandler() {
+	public ResourceBusinessExceptionHandler() {
 		super(UNPROCESSABLE_ENTITY);
 	}
 
@@ -52,7 +52,7 @@ public class BusinessExceptionHandler extends ErrorMessageRestExceptionHandler<B
 	 * @see cz.jirutka.spring.exhandler.handlers.ErrorMessageRestExceptionHandler#createBody(java.lang.Exception, javax.servlet.http.HttpServletRequest)
 	 */
 	@Override
-    public ErrorMessage createBody(BusinessException ex, HttpServletRequest req) {
+    public ErrorMessage createBody(ResourceBusinessException ex, HttpServletRequest req) {
         ErrorMessage tmpl = super.createBody(ex, req);
         ValidationErrorMessage msg = new ValidationErrorMessage(tmpl);
         errorMessage=ex.getErrorMessage();
