@@ -22,17 +22,19 @@ import br.com.silvanopessoa.rest.api.messages.MessageBundleUtil;
 import cz.jirutka.spring.exhandler.messages.ErrorMessage;
 
 /**
- * A classe UsuarioErrorMessages é responsável por gerar mensagens de erros.
+ * A classe UsuarioErrorMessages é responsável por gerar mensagens de erros personalizadas.
  */
 @Component
 public class UsuarioErrorMessages {
 
+    /** O(a)(s) message bundle. */
     @Autowired
     private MessageBundleUtil msg;
     
     /** A Constante PT_BR. */
     public static final String PT_BR = "pt_BR";
-	/**
+	
+    /**
 	 * Delete check not found message.
 	 *
 	 * @param login O(a)(s) login
