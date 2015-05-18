@@ -1,3 +1,15 @@
+/******************************************************************************
+ * Produto: REST                                                              *
+ *                                                                            *
+ *    History:                                                                *
+ *          Data        Programador              Tarefa                       *
+ *          ----------  -----------------        -----------------------------*
+ *   Autor  18/05/2015  silvano.pessoa          Classe criada.                *
+ *                                                                            *
+ *   Comments:                                                                *
+ *                                                                            *
+ *                                                                            *
+ *****************************************************************************/
 package br.com.silvanopessoa.rest.api.base;
 
 import br.com.silvanopessoa.rest.api.exception.ResourceNotFoundException;
@@ -25,6 +37,14 @@ public class PreconditionsRest {
         return reference;
     }
 
+    /**
+     * Check not found.
+     *
+     * @param <T> O tipo genérico
+     * @param reference O(a)(s) reference
+     * @param message O(a)(s) message
+     * @return O(a)(s) t
+     */
     public static <T> T checkNotFound(T reference, ErrorMessage message) {
         if (reference == null) {
             throw new ResourceNotFoundException(message);
