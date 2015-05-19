@@ -53,6 +53,12 @@ public class PreconditionsRest {
         return reference;
     }
     
+    /**
+     * Check condition.
+     *
+     * @param condition O(a)(s) condition
+     * @param message O(a)(s) message
+     */
     public static void checkCondition(boolean condition, ErrorMessage message){
         if (!condition) {
             throw new ResourceBusinessException(message);
