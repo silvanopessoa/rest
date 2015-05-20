@@ -1,10 +1,24 @@
+/******************************************************************************
+ * Produto: REST                                                              *
+ *                                                                            *
+ *    History:                                                                *
+ *          Data        Programador              Tarefa                       *
+ *          ----------  -----------------        -----------------------------*
+ *   Autor  20/05/2015  silvano.pessoa          Classe criada.                *
+ *                                                                            *
+ *   Comments:                                                                *
+ *                                                                            *
+ *                                                                            *
+ *****************************************************************************/
 package br.com.silvanopessoa.rest.model.transformation;
+
+import static br.com.silvanopessoa.rest.model.transformation.config.AssemblerConfigType.HATEOAS;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 import org.joda.time.DateTime;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import br.com.silvanopessoa.model.usuario.v1.UsuarioType;
 import br.com.silvanopessoa.rest.model.Usuario;
 
@@ -38,16 +52,34 @@ public class UsuarioResourceAssembler extends ResourceAssemblerSupport<Usuario, 
     public UsuarioType toResource(Usuario entity) {
         UsuarioType usuarioType = new UsuarioType();
         usuarioType.setLogin(entity.getId());
-        Link link = linkTo(this.controllerClass).slash(entity).withSelfRel();
-        usuarioType.add(link);
+        this.addHateoas(usuarioType, entity);
         return usuarioType;
     }
     
+    /**
+     * To entity.
+     *
+     * @param resource O(a)(s) resource
+     * @return O(a)(s) usuario
+     */
     public Usuario toEntity(UsuarioType resource) {
     	Usuario usuario = new Usuario();
     	usuario.setDataAlteracao(new DateTime());
     	usuario.setId(resource.getLogin());
 		return usuario;
+    }
+    
+    /**
+     * Add hateoas.
+     *
+     * @param usuarioType O(a)(s) usuario type
+     * @param entity O(a)(s) entity
+     */
+    public void addHateoas(UsuarioType usuarioType,Usuario entity){
+    	if(HATEOAS){
+	        Link link = linkTo(this.controllerClass).slash(entity).withSelfRel();
+	        usuarioType.add(link);
+    	}
     }
 
 }
