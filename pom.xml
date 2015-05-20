@@ -15,21 +15,28 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
+		<!-- 00 - DEPENDENCIA DE MÓDULOS -->
+		<rest-modulo-version>0.0.1-SNAPSHOT</rest-modulo-version>
 		<!-- 01 - SPRING FRAMEWORK -->
 		<!-- Spring - http://projects.spring.io/spring-framework/ -->
 		<spring-framework-version>4.1.5.RELEASE</spring-framework-version>
 		<!-- 02 - TESTES -->
 		<junit-version>4.12</junit-version>
+		<reflections-version>0.9.9-RC1</reflections-version>
 		<!-- 03 - CONFIGURACOES BASICAS -->
 		<java-version>1.7</java-version>
 		<!-- 04 - XSD para Object Java -->
 		<jaxb2-maven-plugin-version>1.6</jaxb2-maven-plugin-version>
 		<schema-directory-config>${basedir}/../../canonico/src/main/resources/br/com/silvanopessoa/rest/canonico/v1</schema-directory-config>
 		<binding-directory-config>src/main/resources/br/com/silvanopessoa/rest/canonico/v1/xjb</binding-directory-config>
-		<!-- 05 - Tratamento de exceptions -->
+		<!-- 05 - TRATAMENTO DE EXCEPTIONS -->
 		<!-- http://tools.ietf.org/html/draft-nottingham-http-problem-06#section-3 -->
 		<!-- https://github.com/jirutka/spring-rest-exception-handler -->
 		<spring-rest-exception-handler-version>1.0.3</spring-rest-exception-handler-version>
+		<javax.servlet-api-version>3.1.0</javax.servlet-api-version>
+		<!-- 06 - REST -->
+		<httpcore-version>4.3.2</httpcore-version>
+		
 	</properties>
 
 	<!-- DESENVOLVEDORES -->
@@ -61,6 +68,12 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>${reflections-version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

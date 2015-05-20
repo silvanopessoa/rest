@@ -16,44 +16,20 @@
 	<url>http://maven.apache.org</url>
 	
 	<dependencies>
-		<dependency>
-			<groupId>org.reflections</groupId>
-			<artifactId>reflections</artifactId>
-			<version>0.9.9-RC1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>18.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.7</version>
-		</dependency>
+
+		<!-- 00 - DEPENDENCIA DE MÓDULOS -->
 		<dependency>
 			<groupId>br.com.silvanopessoa.rest</groupId>
 			<artifactId>rest-model-transformation</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpcore</artifactId>
-			<version>4.3.2</version>
+			<version>${rest-modulo-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>br.com.silvanopessoa.rest</groupId>
 			<artifactId>rest-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.5.2</version>
+			<version>${rest-modulo-version}</version>
 		</dependency>
 		
-		<!-- 04 - Tratamento de exceptions -->
+		<!-- 05 - TRATAMENTO DE EXCEPTIONS -->
 		<dependency>
 			<groupId>cz.jirutka.spring</groupId>
 			<artifactId>spring-rest-exception-handler</artifactId>
@@ -62,7 +38,14 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${javax.servlet-api-version}</version>
+		</dependency>
+		
+		<!-- 06 - REST -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>${httpcore-version}</version>
 		</dependency>
 		
 	</dependencies>
