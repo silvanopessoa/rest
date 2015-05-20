@@ -12,6 +12,9 @@
  *****************************************************************************/
 package br.com.silvanopessoa.rest.api.type;
 
+/**
+ * The Class RFC2616Type.
+ */
 public final class RFC2616Type {
 
     /**

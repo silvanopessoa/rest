@@ -1,3 +1,15 @@
+/******************************************************************************
+ * Produto: REST                                                              *
+ *                                                                            *
+ *    History:                                                                *
+ *          Data        Programador              Tarefa                       *
+ *          ----------  -----------------        -----------------------------*
+ *   Autor  20/05/2015  silvano.pessoa          Classe criada.                *
+ *                                                                            *
+ *   Comments:                                                                *
+ *                                                                            *
+ *                                                                            *
+ *****************************************************************************/
 package br.com.silvanopessoa.rest.api.controller;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
