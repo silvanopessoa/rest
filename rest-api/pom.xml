@@ -48,6 +48,14 @@
 			<version>${httpcore-version}</version>
 		</dependency>
 		
+		<!-- 07 - SPRING OAUTH2 -->
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>${spring-security-oauth2-version}</version>
+		</dependency>
+		
+		
 	</dependencies>
 
 </project>
