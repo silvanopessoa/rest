@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- 05 - Tratamento de exceptions -->
+	<bean id="compositeExceptionResolver" class="org.springframework.web.servlet.handler.HandlerExceptionResolverComposite">
+		<property name="order" value="0" />
+		<property name="exceptionResolvers">
+			<list>
+				<ref bean="exceptionHandlerExceptionResolver" />
+				<ref bean="restExceptionResolver" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="restExceptionResolver" class="cz.jirutka.spring.exhandler.RestHandlerExceptionResolverFactoryBean">
+		<property name="messageSource" ref="httpErrorMessageSource" />
+		<property name="defaultContentType" value="application/json" />
+		<property name="exceptionHandlers">
+			<map>
+				<!-- 404 -->
+				<entry key="br.com.silvanopessoa.rest.lang.exception.ResourceNotFoundException">
+					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceNotFoundExceptionHandler"/>
+				</entry>
+				<entry key="br.com.silvanopessoa.rest.lang.exception.ResourceBusinessException">
+					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceBusinessExceptionHandler"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="exceptionHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"/>
+
+	<bean id="httpErrorMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource" p:defaultEncoding="UTF-8"/>
+</beans>
