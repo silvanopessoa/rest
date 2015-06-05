@@ -20,8 +20,18 @@ public class Usuario extends AbstractPersistable<String> {
 
     /** O(a) data alteracao. */
     private DateTime dataAlteracao;
+    
+    private Integer clienteId;
 
-    /**
+    public Integer getClienteId() {
+		return clienteId;
+	}
+
+	public void setClienteId(Integer clienteId) {
+		this.clienteId = clienteId;
+	}
+
+	/**
      * Obtém o valor do(a)(s) data alteracao.
      *
      * @author silvano.pessoa

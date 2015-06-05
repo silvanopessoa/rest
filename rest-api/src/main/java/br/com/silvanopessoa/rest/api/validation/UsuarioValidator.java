@@ -12,7 +12,7 @@
  *****************************************************************************/
 package br.com.silvanopessoa.rest.api.validation;
 
-import static br.com.silvanopessoa.rest.api.base.PreconditionsRest.checkNotFound;
+import static br.com.silvanopessoa.rest.lang.base.PreconditionsRest.checkNotFound;
 
 import org.springframework.stereotype.Component;
 

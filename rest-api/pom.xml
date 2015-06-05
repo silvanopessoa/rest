@@ -28,34 +28,19 @@
 			<artifactId>rest-service</artifactId>
 			<version>${rest-modulo-version}</version>
 		</dependency>
-		
-		<!-- 05 - TRATAMENTO DE EXCEPTIONS -->
 		<dependency>
-			<groupId>cz.jirutka.spring</groupId>
-			<artifactId>spring-rest-exception-handler</artifactId>
-			<version>${spring-rest-exception-handler-version}</version>
+			<groupId>br.com.silvanopessoa.rest</groupId>
+			<artifactId>rest-oauth2</artifactId>
+			<version>${rest-modulo-version}</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${javax.servlet-api-version}</version>
-		</dependency>
-		
+
 		<!-- 06 - REST -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
 			<version>${httpcore-version}</version>
 		</dependency>
-		
-		<!-- 07 - SPRING OAUTH2 -->
-		<dependency>
-			<groupId>org.springframework.security.oauth</groupId>
-			<artifactId>spring-security-oauth2</artifactId>
-			<version>${spring-security-oauth2-version}</version>
-		</dependency>
-		
-		
+
 	</dependencies>
 
 </project>

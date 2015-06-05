@@ -19,6 +19,12 @@
         <dependent-module archiveName="rest-persist-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/rest-persist/rest-persist">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="rest-oauth2-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/rest-oauth2/rest-oauth2">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="rest-lang-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/rest-lang/rest-lang">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="rest-api"/>
         <property name="java-output-path" value="/rest-api/target/classes"/>
     </wb-module>
