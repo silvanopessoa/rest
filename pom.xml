@@ -35,8 +35,14 @@
 		<javax.servlet-api-version>3.1.0</javax.servlet-api-version>
 		<!-- 06 - REST -->
 		<httpcore-version>4.3.2</httpcore-version>
-		<!-- 07 - SPRING OAUTH2 -->
+		<!-- 07 - SPRING SECURITY / OAUTH2 -->
 		<spring-security-oauth2-version>2.0.7.RELEASE</spring-security-oauth2-version>
+		<spring-security-core-version>3.2.6.RELEASE</spring-security-core-version>
+		<!-- 99 - UTILITARIOS -->
+		<commons-lang3-version>3.4</commons-lang3-version>
+		<joda-time-version>2.5</joda-time-version>
+		<guava-version>18.0</guava-version>
+		<hibernate-core-version>4.3.6.Final</hibernate-core-version>
 		
 	</properties>
 
@@ -82,6 +88,7 @@
 	<!-- 03 - CONFIGURACOES BASICAS -->
 	<!-- Modulo de menor dependencia para maior -->
 	<modules>
+		<module>rest-oauth2</module>
 		<module>rest-model</module>
 		<module>rest-dto</module>
 		<module>rest-model-transformation</module>
@@ -89,7 +96,6 @@
 		<module>rest-service</module>
 	    <module>rest-lang</module>
 		<module>rest-api</module>
-		<module>rest-oauth2</module>
   </modules>
 
 	<build>
