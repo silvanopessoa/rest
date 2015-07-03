@@ -12,6 +12,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.hateoas.Identifiable;
 
+import br.com.silvanopessoa.rest.lang.base.Persistable;
+
 /**
  * Classe base para as entidades.
  *
