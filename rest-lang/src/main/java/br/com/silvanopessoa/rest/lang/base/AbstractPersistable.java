@@ -20,7 +20,6 @@ import javax.persistence.MappedSuperclass;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.data.domain.Persistable;
 
 /**
  * Classe base para Entidades.
