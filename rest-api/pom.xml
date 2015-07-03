@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>br.com.silvanopessoa.rest</groupId>
 			<artifactId>rest-oauth2</artifactId>
-			<version>${rest-modulo-version}</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<!-- 06 - REST -->
