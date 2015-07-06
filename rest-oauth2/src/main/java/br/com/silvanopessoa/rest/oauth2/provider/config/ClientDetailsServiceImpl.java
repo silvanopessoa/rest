@@ -12,13 +12,10 @@
  *****************************************************************************/
 package br.com.silvanopessoa.rest.oauth2.provider.config;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.ClientRegistrationService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,7 +24,7 @@ import org.springframework.stereotype.Service;
  * @author silvano.pessoa
  */
 @Service("clientDetailsService")
-public class ClientDetailsServiceImpl implements ClientDetailsService,ClientRegistrationService {
+public class ClientDetailsServiceImpl implements ClientDetailsService{
     
     /** LOG. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ClientDetailsServiceImpl.class);
@@ -41,41 +38,5 @@ public class ClientDetailsServiceImpl implements ClientDetailsService,ClientRegi
     	return null;
     }
 
-    /* (non-Javadoc)
-     * @see org.springframework.security.oauth2.provider.ClientRegistrationService#addClientDetails(org.springframework.security.oauth2.provider.ClientDetails)
-     */
-    @Override
-    public void addClientDetails(ClientDetails clientDetails){
-    }
-
-    /* (non-Javadoc)
-     * @see org.springframework.security.oauth2.provider.ClientRegistrationService#updateClientDetails(org.springframework.security.oauth2.provider.ClientDetails)
-     */
-    @Override
-    public void updateClientDetails(ClientDetails clientDetails){
-    }
-
-    /* (non-Javadoc)
-     * @see org.springframework.security.oauth2.provider.ClientRegistrationService#updateClientSecret(java.lang.String, java.lang.String)
-     */
-    @Override
-    public void updateClientSecret(String clientId, String secret){
-    }
-
-    /* (non-Javadoc)
-     * @see org.springframework.security.oauth2.provider.ClientRegistrationService#removeClientDetails(java.lang.String)
-     */
-    @Override
-    public void removeClientDetails(String clientId){
-    }
-
-    /* (non-Javadoc)
-     * @see org.springframework.security.oauth2.provider.ClientRegistrationService#listClientDetails()
-     */
-    @Override
-    public List<ClientDetails> listClientDetails() {
-    	return null;
-    }
-    
 }
 
