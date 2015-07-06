@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>br.com.silvanopessoa.rest</groupId>
+		<artifactId>rest</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>rest-oauth2</artifactId>
+	<name>rest-oauth2</name>
+	<url>http://maven.apache.org</url>
+	
+	<dependencies>
+	
+		<!-- 00 - DEPENDENCIA DE MÓDULOS -->
+		<dependency>
+			<groupId>br.com.silvanopessoa.rest</groupId>
+			<artifactId>rest-model</artifactId>
+			<version>${rest-modulo-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>br.com.silvanopessoa.rest</groupId>
+			<artifactId>rest-lang</artifactId>
+			<version>${rest-modulo-version}</version>
+		</dependency>
+		
+		<!-- 07 - SPRING OAUTH2 -->
+		<!-- http://projects.spring.io/spring-security-oauth/docs/downloads.html -->
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>${spring-security-oauth2-version}</version>
+		</dependency>
+		
+		<!-- 80 - BANCO DE DADOS -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>${spring-data-mongodb-version}</version>
+		</dependency>
+		
+	</dependencies>
+</project>

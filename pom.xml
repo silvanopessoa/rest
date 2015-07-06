@@ -43,6 +43,9 @@
 		<!-- 09 - SPRING HATEOAS -->
 		<spring-hateoas-version>0.16.0.RELEASE</spring-hateoas-version>
 		
+		<!-- 80 - BANCO DE DADOS -->
+		<spring-data-mongodb-version>1.7.0.RELEASE</spring-data-mongodb-version>
+		
 		<!-- 99 - UTILITARIOS -->
 		<commons-lang3-version>3.4</commons-lang3-version>
 		<joda-time-version>2.7</joda-time-version>
@@ -100,7 +103,7 @@
 		<module>rest-service</module>
 	    <module>rest-lang</module>
 		<module>rest-api</module>
-  </modules>
+	</modules>
 
 	<build>
 		<finalName>rest-api</finalName>
