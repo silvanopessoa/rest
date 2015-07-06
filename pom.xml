@@ -40,10 +40,12 @@
 		<spring-security-core-version>3.2.6.RELEASE</spring-security-core-version>
 		<!-- 08 - HIBERNATE / ANNOTATION -->
 		<hibernate-core-version>4.3.6.Final</hibernate-core-version>
+		<!-- 09 - SPRING HATEOAS -->
+		<spring-hateoas-version>0.16.0.RELEASE</spring-hateoas-version>
 		
 		<!-- 99 - UTILITARIOS -->
 		<commons-lang3-version>3.4</commons-lang3-version>
-		<joda-time-version>2.5</joda-time-version>
+		<joda-time-version>2.7</joda-time-version>
 		<guava-version>18.0</guava-version>
 		
 	</properties>
