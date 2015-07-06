@@ -38,11 +38,13 @@
 		<!-- 07 - SPRING SECURITY / OAUTH2 -->
 		<spring-security-oauth2-version>2.0.7.RELEASE</spring-security-oauth2-version>
 		<spring-security-core-version>3.2.6.RELEASE</spring-security-core-version>
+		<!-- 08 - HIBERNATE / ANNOTATION -->
+		<hibernate-core-version>4.3.6.Final</hibernate-core-version>
+		
 		<!-- 99 - UTILITARIOS -->
 		<commons-lang3-version>3.4</commons-lang3-version>
 		<joda-time-version>2.5</joda-time-version>
 		<guava-version>18.0</guava-version>
-		<hibernate-core-version>4.3.6.Final</hibernate-core-version>
 		
 	</properties>
 
