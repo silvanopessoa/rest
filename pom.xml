@@ -42,6 +42,9 @@
 		<hibernate-core-version>4.3.6.Final</hibernate-core-version>
 		<!-- 09 - SPRING HATEOAS -->
 		<spring-hateoas-version>0.16.0.RELEASE</spring-hateoas-version>
+		<!-- 10 - JACKSON CONFIGURACAO XML/JSON -->
+		<jackson-version>2.3.5</jackson-version>
+		<jackson-mapper-asl-version>1.9.13</jackson-mapper-asl-version>
 		
 		<!-- 80 - BANCO DE DADOS -->
 		<spring-data-mongodb-version>1.7.0.RELEASE</spring-data-mongodb-version>

@@ -22,6 +22,7 @@
 	<!-- http://stackoverflow.com/questions/26416248/spring-4-1-1-release-and-responsebody-return-http-406 -->
 	<mvc:annotation-driven>
 		<mvc:message-converters>
+			<!-- No formato XML não está incluso scope e token_type -->
 			<bean class="org.springframework.security.oauth2.http.converter.jaxb.JaxbOAuth2AccessTokenMessageConverter" />
 			<bean class="org.springframework.security.oauth2.http.converter.jaxb.JaxbOAuth2ExceptionMessageConverter" />
 		</mvc:message-converters>
