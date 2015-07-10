@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2-1.0.xsd
+					    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	
+	<!-- The OAuth2 protected resources are separated out into their own block so we can deal with authorization and error handling separately. This isn't mandatory, but it makes it easier to control the 
+		behaviour. -->
+	<!-- See docs for EL-based access control http://static.springsource.org/spring-security/site/docs/3.0.x/reference/el-access.html -->
+	<!-- USUARIOS -->
+	<http pattern="/usuarios(?!\/emails).*" 
+		request-matcher="regex" create-session="stateless" 
+		entry-point-ref="oauthAuthenticationEntryPoint" 
+		use-expressions="true"
+		xmlns="http://www.springframework.org/schema/security" >
+
+		<anonymous enabled="false" />
+
+		<!-- salvar usuarios -->
+		<intercept-url method="POST" pattern="/usuarios" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write')" />
+
+		<!-- get usuario -->
+		<intercept-url method="GET" pattern="/usuarios(\/.*{1,}@.*{1,}?[^/])" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('read')" />
+
+		<!-- alterar usuario -->
+		<intercept-url method="PUT" pattern="/usuarios(\/[^/]*?[^/]*)$" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write')" />
+
+		<!-- deletar usuario -->
+		<intercept-url method="DELETE" pattern="/usuarios(\/.*?[^/])" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write')" />
+
+		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
+		
+		<!-- and hasRole('ROLE_CONNECT_READ_USER') -->
+		<access-denied-handler ref="oauthAccessDeniedHandler" />
+		<expression-handler ref="oauthWebExpressionHandler" />
+	</http>
+
+
+</beans>

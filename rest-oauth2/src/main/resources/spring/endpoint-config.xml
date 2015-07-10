@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2-1.0.xsd
+					    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	
+	<!-- 12 - ATIVANDO SEGURANÇA POR ANOTATION -->
+	<!-- http://blabadi.blogspot.com.br/2014/08/creating-your-own-oauth2-server-and_31.html -->
+	<!-- https://gist.github.com/ddewaele/6411612 -->
+	<!-- @PreAuthorize("hasRole('ROLE_ADMIN') and #oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasRole('ROLE_ADMIN'))") -->
+	<!--you could also wire in the expression handler up at the layer of the http filters. See https://jira.springsource.org/browse/SEC-1452 -->
+	<sec:global-method-security	pre-post-annotations="enabled" proxy-target-class="true">
+		<sec:expression-handler ref="oauthExpressionHandler"/>
+	</sec:global-method-security>
+
+	<oauth:expression-handler id="oauthExpressionHandler"/>
+
+	<!-- 13 - ATIVANDO SEGURANÇA POR XML -->
+	<!-- Security error handling concerns specific to OAuth2 resources -->
+	<bean id="oauthAccessDeniedHandler" class="org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler" />
+	
+	<!-- OAuth expression handler for access control -->
+	<oauth:web-expression-handler id="oauthWebExpressionHandler" />
+	
+	<bean id="oauthAuthenticationEntryPoint" class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint">
+		<property name="realmName" value="rest-api" />
+	</bean>
+	
+	<!-- Loads an instance of OAuth2AuthenticationProcessingFilter. If resource-id is set, then only tokens that contains this resource id will be accepted. -->
+	<oauth:resource-server id="resourceServerFilter" resource-id="rest-api" token-services-ref="defaultTokenServices" />
+
+</beans>

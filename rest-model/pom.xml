@@ -7,18 +7,16 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>rest-model</artifactId>
+	
 	<dependencies>
-		<!-- 99 - UTILITARIOS -->
+		
+		<!-- 00 - DEPENDENCIA DE MÓDULOS -->
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons-lang3-version}</version>
+			<groupId>br.com.silvanopessoa.rest</groupId>
+			<artifactId>rest-lang</artifactId>
+			<version>${rest-modulo-version}</version>
 		</dependency>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>${joda-time-version}</version>
-		</dependency>
+		
 		<!-- 07 - SPRING SECURITY / OAUTH2 -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -36,11 +34,7 @@
 
 
 	
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>4.3.6.Final</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
@@ -51,6 +45,7 @@
 			<artifactId>spring-hateoas</artifactId>
 			<version>0.16.0.RELEASE</version>
 		</dependency>
+
 
 	</dependencies>
 </project>

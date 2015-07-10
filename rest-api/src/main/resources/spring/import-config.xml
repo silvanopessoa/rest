@@ -10,13 +10,13 @@
               
 	<!-- http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#beans-scanning-name-generator -->
 	<import resource="classpath*:*/exception-handler-config.xml"/>
+	<import resource="classpath*:*/password-encoder-config.xml"/>
 	<import resource="classpath*:*/authentication-managers-config.xml"/>
 	<import resource="classpath*:*/client-details-config.xml"/>
 	<import resource="classpath*:*/endpoint-config.xml"/>
 	<import resource="classpath*:*/endpoint-services-config.xml"/>
 	<import resource="classpath*:*/endpoint-token-config.xml"/>
 	<import resource="classpath*:*/oauth2-config.xml"/>
-	<import resource="classpath*:*/mongo-token-store-config.xml"/>
-	<import resource="classpath*:*/password-encoder-config.xml"/>
+<!-- 	<import resource="classpath*:*/mongo-token-store-config.xml"/> -->
 
 </beans>

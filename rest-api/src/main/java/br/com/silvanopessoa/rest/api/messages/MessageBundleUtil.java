@@ -30,7 +30,6 @@ public class MessageBundleUtil {
     
     /** A Constante PT_BR. */
     public static final String PT_BR = "pt_BR";
-
     
 	/**
 	 * Obtém o valor do(a)(s) message.

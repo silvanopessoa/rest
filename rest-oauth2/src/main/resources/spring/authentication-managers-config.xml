@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 10 - GRANT TYPE - PASSWORD -->
+	<!-- Gerenciador de autenticações. -->
+	<sec:authentication-manager alias="userAuthenticationManager">
+		<sec:authentication-provider ref="passwordAuthenticationProvider"/>
+	</sec:authentication-manager>
+
+	<!-- Provedor de Autenticacao Customizado -->
+	<!-- Adiciona validações customizadas no processo de autenticação do usuário. -->
+	<!-- http://docs.spring.io/spring-security/site/docs/4.0.1.RELEASE/reference/htmlsingle/#ns-auth-providers -->
+	<!-- userDetailsService - Responsável por obter um usuário do tipo UserDetails com suas permissões que pode ser customizado -->
+	<!-- passwordEncoder    - Criptografia definido para a autenticação. -->
+	<bean id="passwordAuthenticationProvider" class="br.com.silvanopessoa.rest.oauth2.provider.check.PasswordAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService"/>
+		<property name="passwordEncoder" ref="passwordEncoder"/>
+	</bean>
+	
+	<!-- 11 - GRANT TYPE - CLIENT CREDENTIALS -->
+	<!-- Gerenciador de autenticações. -->
+	<!-- Responsável por obter um cliente do tipo ClientDetails. -->
+	<!-- Criptografia definido para a autenticação. -->
+	<!-- passwordEncoder    - Criptografia definido para a autenticação. -->
+	<sec:authentication-manager id="clientAuthenticationManager">
+		<sec:authentication-provider user-service-ref="clientDetailsUserService">
+			<sec:password-encoder ref="passwordEncoder" />
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+	
+	<!-- http://www.e-zest.net/blog/rest-authentication-using-oauth-2-0-resource-owner-password-flow-protocol/ -->
+	<bean id="clientDetailsUserService" class="org.springframework.security.oauth2.provider.client.ClientDetailsUserDetailsService">
+		<constructor-arg ref="clientDetailsService" />
+	</bean>
+
+</beans>

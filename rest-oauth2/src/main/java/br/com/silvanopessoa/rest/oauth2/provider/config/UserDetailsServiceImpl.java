@@ -18,6 +18,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import br.com.silvanopessoa.rest.model.Usuario;
+
 /**
  * A Classe UserDetailsServiceImpl é responsável por retornar um usuário do tipo UserDetails com suas permissões.
  * Define a estratégia para carregar um usuário específico.
@@ -36,6 +38,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String login) {
     	LOGGER.info("Obtendo o usuário pelo login.");
-    	return null;
+    	return this.mockUserDetails();
+    }
+    
+    private Usuario mockUserDetails(){
+    	Usuario usuario = new Usuario();
+    	usuario.setId("silvano");
+    	usuario.setPassword("$2a$10$aSD/iVbXwHV9A1tyaasYqutteIXxqHMzOoQAyJZw9ogAELdHhdQ8u");
+    	usuario.setAccountNonLocked(true);
+    	usuario.setEnabled(true);
+    	return usuario;
     }
 }
