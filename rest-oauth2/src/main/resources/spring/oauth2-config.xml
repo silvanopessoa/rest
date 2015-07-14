@@ -14,7 +14,8 @@
 
 	<!-- In XML there is an <authorization-server/> element that is used in a similar way to configure the OAuth 2.0 Authorization Server. -->
 	<!-- https://github.com/IISH/PID-webservice/blob/master/server/src/main/webapp/WEB-INF/oauth2-servlet.xml -->
-	<oauth:authorization-server 
+	<oauth:authorization-server
+		user-approval-handler-ref="userApprovalHandler"   
 		token-services-ref="defaultTokenServices" 
 		client-details-service-ref="clientDetailsService">
 		
@@ -33,13 +34,32 @@
 		<oauth:password authentication-manager-ref="userAuthenticationManager"/>
 	</oauth:authorization-server>
 
+	<bean id="tokenStore" name="tokenStore" scope="singleton" class="org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore"/>
+
 	<!-- 19 - CONFIGURACOES TOKEN EM MEMÓRIA -->
-	<bean id="defaultTokenServices" class="org.springframework.security.oauth2.provider.token.DefaultTokenServices">
+	<bean id="defaultTokenServices" name="defaultTokenServices" class="org.springframework.security.oauth2.provider.token.DefaultTokenServices">
 		<property name="tokenStore" ref="tokenStore" />
 		<property name="supportRefreshToken" value="true" />
 		<property name="reuseRefreshToken" value="false" />
 		<property name="clientDetailsService" ref="clientDetailsService" />
+		<property name="accessTokenValiditySeconds" value="6000" />
 	</bean>
 	
-	<bean id="tokenStore" class="org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore" />
+	<!-- Loads an instance of OAuth2AuthenticationProcessingFilter. If resource-id is set, then only tokens that contains this resource id will be accepted. -->
+	<oauth:resource-server id="resourceServerFilter" resource-id="rest-api" token-services-ref="defaultTokenServices" />
+	
+	<bean id="clientCredentialsTokenEndpointFilter" class="org.springframework.security.oauth2.provider.client.ClientCredentialsTokenEndpointFilter">
+		<property name="authenticationManager" ref="clientAuthenticationManager" />
+	</bean>
+		
+	<bean id="oAuth2RequestFactory" class="org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory">
+		<constructor-arg ref="clientDetailsService" />
+	</bean>
+	
+	<bean id="userApprovalHandler" class="org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler">
+		<property name="requestFactory" ref="oAuth2RequestFactory" />
+		<property name="tokenStore" ref="tokenStore" />
+	</bean>
+	
+
 </beans>
