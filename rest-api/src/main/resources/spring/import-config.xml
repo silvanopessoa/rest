@@ -17,6 +17,5 @@
 	<import resource="classpath*:*/endpoint-services-config.xml"/>
 	<import resource="classpath*:*/endpoint-token-config.xml"/>
 	<import resource="classpath*:*/oauth2-config.xml"/>
-<!-- 	<import resource="classpath*:*/mongo-token-store-config.xml"/> -->
 
 </beans>

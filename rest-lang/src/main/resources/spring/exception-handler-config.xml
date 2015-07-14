@@ -29,8 +29,16 @@
 				<entry key="br.com.silvanopessoa.rest.lang.exception.ResourceNotFoundException">
 					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceNotFoundExceptionHandler"/>
 				</entry>
+				<!-- 422 -->
 				<entry key="br.com.silvanopessoa.rest.lang.exception.ResourceBusinessException">
 					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceBusinessExceptionHandler"/>
+				</entry>
+				<!-- 415 -->
+				<entry key="br.com.silvanopessoa.rest.lang.exception.ResourceUnsupportedMediaTypeException">
+					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceUnsupportedMediaTypeHandler"/>
+				</entry>
+				<entry key="org.springframework.util.InvalidMimeTypeException">
+					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceInvalidMimeTypeHandler"/>
 				</entry>
 			</map>
 		</property>

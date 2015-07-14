@@ -54,24 +54,29 @@ public class ClientDetailsServiceImpl implements ClientDetailsService{
      */
     private ClientDetails mockClientDetails(){
     	CustomClientDetails customClientDetails = new CustomClientDetails();
-    	customClientDetails.setClientSecret("$2a$10$abX8xMn08cqBJVSFqy9EUON.aUM296Px7noYOQvMe294SZHpvG576");
     	customClientDetails.setClientId("0");
-    	customClientDetails.setName("Cliente Teste");
+    	customClientDetails.setEnabled(true);
+    	Set<String> scope = new HashSet<String>();
+    	scope.add("read");
+    	scope.add("write");
+    	customClientDetails.setScope(scope);
+    	Set<String> authorizedGrantTypes = new HashSet<String>();
+    	authorizedGrantTypes.add("password");
+    	authorizedGrantTypes.add("refresh_token");
+    	customClientDetails.setAuthorizedGrantTypes(authorizedGrantTypes);
+    	customClientDetails.setClientSecret("$2a$10$abX8xMn08cqBJVSFqy9EUON.aUM296Px7noYOQvMe294SZHpvG576");
+    	customClientDetails.setRefreshTokenValiditySeconds(15000);
+    	customClientDetails.setSecretRequired(true);
+    	customClientDetails.setAccessTokenValiditySeconds(15000);
     	Collection<GrantedAuthority> collection = new ArrayList<GrantedAuthority>();
     	SimpleGrantedAuthority authority1 = new SimpleGrantedAuthority("ROLE_CLIENT");
     	SimpleGrantedAuthority authority2 = new SimpleGrantedAuthority("ROLE_TRUSTED_CLIENT");
     	collection.add(authority1);
     	collection.add(authority2);
     	customClientDetails.setAuthorities(collection);
-    	Set<String> scope = new HashSet<String>();
-    	scope.add("read");
-    	scope.add("write");
-    	customClientDetails.setScope(scope);
+    	customClientDetails.setName("Cliente Teste");
+    	customClientDetails.setScoped(true);
     	
-    	Set<String> authorizedGrantTypes = new HashSet<String>();
-    	authorizedGrantTypes.add("password");
-    	authorizedGrantTypes.add("refresh_token");
-    	customClientDetails.setAuthorizedGrantTypes(authorizedGrantTypes);
     	return customClientDetails;
     }
 
