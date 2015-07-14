@@ -40,6 +40,9 @@
 				<entry key="org.springframework.util.InvalidMimeTypeException">
 					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceInvalidMimeTypeHandler"/>
 				</entry>
+				<entry key="org.springframework.http.InvalidMediaTypeException">
+					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceInvalidMediaTypeHandler"/>
+				</entry>
 			</map>
 		</property>
 	</bean>
