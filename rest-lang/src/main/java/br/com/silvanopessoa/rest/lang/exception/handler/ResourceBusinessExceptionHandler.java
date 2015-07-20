@@ -16,9 +16,6 @@ import static br.com.silvanopessoa.rest.lang.type.RFC2518Type.UNPROCESSABLE_ENTI
 import static br.com.silvanopessoa.rest.lang.type.RFC2518Type.UNPROCESSABLE_ENTITY_URI;
 import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -42,7 +39,7 @@ public class ResourceBusinessExceptionHandler extends ErrorMessageRestExceptionH
     private ErrorMessage errorMessage;
     
 	/**
-	 * Instancia um novo(a) resource not found exception handler.
+	 * Instancia um novo(a) resource business exception handler.
 	 */
 	public ResourceBusinessExceptionHandler() {
 		super(UNPROCESSABLE_ENTITY);
@@ -53,79 +50,19 @@ public class ResourceBusinessExceptionHandler extends ErrorMessageRestExceptionH
 	 */
 	@Override
     public ErrorMessage createBody(ResourceBusinessException ex, HttpServletRequest req) {
+		LOGGER.debug("ResourceBusinessExceptionHandler - Iniciado");
         ErrorMessage tmpl = super.createBody(ex, req);
         ValidationErrorMessage msg = new ValidationErrorMessage(tmpl);
         errorMessage=ex.getErrorMessage();
         if(errorMessage==null){
         	errorMessage = new ErrorMessage();
         }
-       	msg.setType(this.getType());
-       	msg.setTitle(this.getTitle());
-       	msg.setDetail(this.getDetail());
-       	msg.setInstance(this.getUriInstance());
+       	msg.setType(ResourceHandlerUtil.getType(errorMessage,UNPROCESSABLE_ENTITY_SPEC));
+       	msg.setTitle(ResourceHandlerUtil.getTitle(errorMessage,HttpStatus.UNPROCESSABLE_ENTITY));
+       	msg.setDetail(ResourceHandlerUtil.getDetail(errorMessage,HttpStatus.UNPROCESSABLE_ENTITY));
+       	msg.setInstance(ResourceHandlerUtil.getUriInstance(errorMessage,UNPROCESSABLE_ENTITY_URI));
+       	LOGGER.debug("ResourceBusinessExceptionHandler - Concluído");
         return msg;
     }
-	
-	/**
-	 * Obtém o valor do(a)(s) detail.
-	 *
-	 * @return O(a)(s) detail
-	 */
-	private String getDetail(){
-        if(errorMessage.getDetail()==null){
-        	return HttpStatus.UNPROCESSABLE_ENTITY.getReasonPhrase();
-        }else{
-        	return errorMessage.getDetail();
-        }
-	}
-	
-	/**
-	 * Obtém o valor do(a)(s) title.
-	 *
-	 * @return O(a)(s) title
-	 */
-	private String getTitle(){
-        if(errorMessage.getTitle()==null){
-        	return HttpStatus.UNPROCESSABLE_ENTITY.getReasonPhrase();
-        }else{
-        	return errorMessage.getTitle();
-        }
-	}
-	
-	/**
-	 * Obtém o valor do(a)(s) type.
-	 *
-	 * @return O(a)(s) type
-	 */
-	private URI getType(){
-		 if(errorMessage.getType()==null){
-			try {
-				return new URI(UNPROCESSABLE_ENTITY_SPEC);
-			} catch (URISyntaxException e) {
-				LOGGER.error("Erro ao criar URI " + UNPROCESSABLE_ENTITY_SPEC, e);
-			}
-		 }else{
-			 return errorMessage.getType();
-		 }
-		return null;
-	}
-
-	/**
-	 * Obtém o valor do(a)(s) uri instance.
-	 *
-	 * @return O(a)(s) uri instance
-	 */
-	private URI getUriInstance(){
-		 if(errorMessage.getInstance()==null){
-			try {
-				return new URI(UNPROCESSABLE_ENTITY_URI);
-			} catch (URISyntaxException e) {
-				LOGGER.error("Erro ao criar URI " + UNPROCESSABLE_ENTITY_URI, e);
-			}
-		 }else{
-			 return errorMessage.getInstance();
-		 }
-		return null;
-	}
 
 }
