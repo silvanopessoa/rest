@@ -1,3 +1,15 @@
+/******************************************************************************
+ * Produto: REST                                                              *
+ *                                                                            *
+ *    History:                                                                *
+ *          Data        Programador              Tarefa                       *
+ *          ----------  -----------------        -----------------------------*
+ *   Autor  21/07/2015  silvano.pessoa          Classe criada.                *
+ *                                                                            *
+ *   Comments:                                                                *
+ *                                                                            *
+ *                                                                            *
+ *****************************************************************************/
 package br.com.silvanopessoa.rest.service;
 
 import org.springframework.stereotype.Service;
@@ -72,6 +84,11 @@ public class UsuarioService {
         return usuario;
     }
 
+	/**
+	 * Salvar usuario.
+	 *
+	 * @param usuarioEntity O(a)(s) usuario entity
+	 */
 	public void salvarUsuario(Usuario usuarioEntity) {
 		
 	}
