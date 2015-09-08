@@ -73,6 +73,16 @@ public class ResourceUnsupportedMediaTypeException extends RuntimeException{
 	}
 	
 	/**
+	 * Instancia um novo(a) resource unsupported media type exception.
+	 *
+	 * @param errorMessage O(a)(s) error message
+	 */
+	public ResourceUnsupportedMediaTypeException(ErrorMessage errorMessage) {
+		super(errorMessage.getDetail());
+		this.errorMessage = errorMessage;
+	}
+	
+	/**
 	 * Obtém o valor do(a)(s) error message.
 	 *
 	 * @return O(a)(s) error message

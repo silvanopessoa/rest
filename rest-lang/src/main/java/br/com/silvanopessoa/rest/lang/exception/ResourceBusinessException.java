@@ -94,6 +94,7 @@ public class ResourceBusinessException extends RuntimeException{
 	 * @param errorMessage O(a)(s) error message
 	 */
 	public ResourceBusinessException(ErrorMessage errorMessage){
+		super(errorMessage.getDetail());
 		this.errorMessage = errorMessage;
 	}
 	

@@ -78,6 +78,7 @@ public class ResourceNotFoundException extends RuntimeException{
 	 * @param errorMessage O(a)(s) error message
 	 */
 	public ResourceNotFoundException(ErrorMessage errorMessage){
+		super(errorMessage.getDetail());
 		this.errorMessage = errorMessage;
 	}
 
