@@ -12,6 +12,7 @@
  *****************************************************************************/
 package br.com.silvanopessoa.rest.service;
 
+import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
 import br.com.silvanopessoa.rest.model.Usuario;
@@ -81,6 +82,7 @@ public class UsuarioService {
     public Usuario getUsuario(String login, String dataAlteracao, String clienteId) {
         Usuario usuario = new Usuario();
         usuario.setId("silvano@web");
+        usuario.setDataAlteracao(DateTime.now());
         return usuario;
     }
 

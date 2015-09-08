@@ -52,6 +52,7 @@ public class UsuarioResourceAssembler extends ResourceAssemblerSupport<Usuario, 
     public UsuarioType toResource(Usuario entity) {
         UsuarioType usuarioType = new UsuarioType();
         usuarioType.setLogin(entity.getId());
+        usuarioType.setDataAlteracao(entity.getDataAlteracao());
         this.addHateoas(usuarioType, entity);
         return usuarioType;
     }
