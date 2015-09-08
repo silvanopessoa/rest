@@ -41,6 +41,14 @@
 			<version>${httpcore-version}</version>
 		</dependency>
 
+		<!-- 10 - JACKSON CONFIGURACAO XML/JSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
+			<version>${jackson-datatype-joda-version}</version>
+		</dependency>
+		
+
 	</dependencies>
 
 </project>
