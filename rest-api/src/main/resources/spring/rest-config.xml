@@ -25,6 +25,10 @@
 			<!-- No formato XML não está incluso scope e token_type -->
 			<bean class="org.springframework.security.oauth2.http.converter.jaxb.JaxbOAuth2AccessTokenMessageConverter" />
 			<bean class="org.springframework.security.oauth2.http.converter.jaxb.JaxbOAuth2ExceptionMessageConverter" />
+			<!-- Adiciona Suporte ao Joda Time -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper" ref="customJacksonMapper" />
+			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven> 
 	
