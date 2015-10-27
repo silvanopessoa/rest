@@ -15,6 +15,7 @@
 	<context:component-scan base-package="br.com.silvanopessoa.rest.api.controller" />
 	<context:component-scan base-package="br.com.silvanopessoa.rest.api.exception" />
 	<context:component-scan base-package="br.com.silvanopessoa.rest.api.validation" />
+	<context:component-scan base-package="br.com.silvanopessoa.rest.api.conf" />
 	
 	<!-- 04 - INTERCEPTADOR DE EXCEPTION -->
 	<!-- Obrigatorio para reconhecer as anotacoes -->
