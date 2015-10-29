@@ -109,6 +109,15 @@
 		<module>rest-api</module>
 	</modules>
 
+	<!-- 11 - SWAGGER -->
+	<repositories>
+		<repository>
+			<id>jcenter-snapshots</id>
+			<name>jcenter</name>
+			<url>https://jcenter.bintray.com/</url>
+		</repository>
+	</repositories>
+
 	<build>
 		<finalName>rest-api</finalName>
 		<plugins>

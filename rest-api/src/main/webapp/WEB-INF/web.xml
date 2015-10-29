@@ -50,9 +50,9 @@
 	<!-- Bootstrap the root application context as usual using ContextLoaderListener. 
 		Inicializa e para o WebApplicationContext. -->
 	<!-- Loads Spring root context, which will be the parent context -->
-	<listener>
-		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
-	</listener>
+<!-- 	<listener> -->
+<!-- 		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class> -->
+<!-- 	</listener> -->
 
 	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 	<!-- ||||||||||||||||||||||||||||||||| SPRING SECURITY ||||||||||||||||||||||||||||||||| -->
