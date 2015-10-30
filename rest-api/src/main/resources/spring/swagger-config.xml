@@ -20,4 +20,5 @@
     <!-- 11 - SWAGGER -->
     <!-- Ativa arquivo de configuração. -->
     <bean name="/applicationSwaggerConfig" class="br.com.silvanopessoa.rest.api.conf.swagger.ApplicationSwaggerConfig"/>	
+    
 </beans>
