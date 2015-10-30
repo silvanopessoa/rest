@@ -181,10 +181,8 @@ public class UsuarioController {
     			value = ApplicationSwaggerConfig.securityOAuth2, 
 				scopes = {@AuthorizationScope( scope = "read", description = "read")})})
 	@ApiResponses(value = { 
-		@ApiResponse(code = 200, message = "OK"),
-		@ApiResponse(code = 304, message = "Not Modified"),
-		@ApiResponse(code = 401, message = "Unauthorized"),
-		@ApiResponse(code = 403, message = "Forbidden"),		
+		@ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 304, message = "Not Modified"),
+		@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),		
 		@ApiResponse(code = 404, message = "Not Found")})
 	@RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
