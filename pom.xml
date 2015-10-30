@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.silvanopessoa.rest</groupId>
@@ -13,7 +14,7 @@
 	<!-- PROPRIEDADES -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
+
 		<!-- 00 - DEPENDENCIA DE MÓDULOS -->
 		<rest-modulo-version>0.0.1-SNAPSHOT</rest-modulo-version>
 		<!-- 01 - SPRING FRAMEWORK -->
@@ -46,15 +47,15 @@
 		<jackson-version>2.3.5</jackson-version>
 		<jackson-mapper-asl-version>1.9.13</jackson-mapper-asl-version>
 		<jackson-datatype-joda-version>2.6.1</jackson-datatype-joda-version>
-		
+
 		<!-- 80 - BANCO DE DADOS -->
 		<spring-data-mongodb-version>1.7.0.RELEASE</spring-data-mongodb-version>
-		
+
 		<!-- 99 - UTILITARIOS -->
 		<commons-lang3-version>3.4</commons-lang3-version>
 		<joda-time-version>2.7</joda-time-version>
 		<guava-version>18.0</guava-version>
-		
+
 	</properties>
 
 	<!-- DESENVOLVEDORES -->
@@ -79,7 +80,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
 		<!-- 02 - TESTES -->
 		<dependency>
@@ -95,7 +96,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<!-- 03 - CONFIGURACOES BASICAS -->
 	<!-- Modulo de menor dependencia para maior -->
 	<modules>
@@ -105,12 +106,17 @@
 		<module>rest-model-transformation</module>
 		<module>rest-persist</module>
 		<module>rest-service</module>
-	    <module>rest-lang</module>
+		<module>rest-lang</module>
 		<module>rest-api</module>
 	</modules>
 
 	<!-- 11 - SWAGGER -->
 	<repositories>
+		<repository>
+			<id>jcenter-releases</id>
+			<name>jcenter</name>
+			<url>https://jcenter.bintray.com/</url>
+		</repository>
 		<repository>
 			<id>jcenter-snapshots</id>
 			<name>jcenter</name>
