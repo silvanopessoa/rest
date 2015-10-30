@@ -185,12 +185,12 @@ public class UsuarioController {
 		@ApiResponse(code = 404, message = "Not Found")})
     @RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
-        LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário. Indenticador do usuário: {}",login);
+        LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário. Identicador do usuário: {}",login);
         String clienteId ="";
         validator.checkGetRequest(login, dataAlteracao, clienteId);
         Usuario usuario = service.getUsuario(login, dataAlteracao, clienteId);
         validator.checkGetResponse(usuario);
-        LOGGER.debug("GET USUARIO | Concluído | Obtem o usuário. Indenticador do usuário: {}",login);
+        LOGGER.debug("GET USUARIO | Concluído | Obtem o usuário. Identicador do usuário: {}",login);
         return new ResponseEntity<>(assembler.toResource(usuario),OK);
     }
 
