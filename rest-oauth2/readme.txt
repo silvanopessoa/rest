@@ -1,0 +1,1 @@
+http://localhost:8080/rest-api/oauth/token?grant_type=password&client_id=0&client_secret=d0f3e83e-16ba-4272-88f8-78f131408bfb&username=silvano&password=12345678

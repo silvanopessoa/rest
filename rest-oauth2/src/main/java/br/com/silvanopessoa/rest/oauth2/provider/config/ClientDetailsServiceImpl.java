@@ -64,7 +64,7 @@ public class ClientDetailsServiceImpl implements ClientDetailsService{
     	authorizedGrantTypes.add("password");
     	authorizedGrantTypes.add("refresh_token");
     	customClientDetails.setAuthorizedGrantTypes(authorizedGrantTypes);
-    	customClientDetails.setClientSecret("$2a$10$abX8xMn08cqBJVSFqy9EUON.aUM296Px7noYOQvMe294SZHpvG576");
+    	customClientDetails.setClientSecret("$2a$10$AS30Aq4frR7cpQu.fu1MmeHJhark3LOAC4wR3uUBrNyVMk9MZRTeu");
     	customClientDetails.setRefreshTokenValiditySeconds(15000);
     	customClientDetails.setSecretRequired(true);
     	customClientDetails.setAccessTokenValiditySeconds(15000);
