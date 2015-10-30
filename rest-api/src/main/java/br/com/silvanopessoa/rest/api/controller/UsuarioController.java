@@ -23,6 +23,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Authorization;
+import io.swagger.annotations.AuthorizationScope;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -160,7 +165,6 @@ public class UsuarioController {
         LOGGER.info("DELETE USUARIO | Concluído | Usuário:" + login);
     }
     
-    
     /**
      * Obtém o valor do(a)(s) usuario.
      *
@@ -169,14 +173,24 @@ public class UsuarioController {
      * @param dataAlteracao o(a) data alteracao
      * @return o(a) usuario
      */
+    @ApiOperation(
+    		value = "Obtem um usuário pelo seu identificador.", 
+    		notes = "<br><b>Descrição:</b> Obtem usuario pelo identificador informado.<br><br> <b>Clientes:</b> Todos.<br><b>Scope:</b> read<br><b>Roles System:</b> ROLE_CLIENT<br><b>Roles User:</b> ROLE_REST_USER_FIND<br><b>Tarefas:</b> <a href=\"https://github.com/silvanopessoa/rest\" target=\"_blank\">#1</a><br><b>Documentação Canônico:</b> Não informado.<br><b>Documentação Teste:</b> Não informado.<br><b>Tipos de Autenticação:</b> password<br>", 
+    		authorizations = @Authorization(value = "oauth2", scopes = { @AuthorizationScope(scope = "read", description = "read") }))
+    @ApiResponses(value = { 
+		@ApiResponse(code = 200, message = "OK"),
+		@ApiResponse(code = 304, message = "Not Modified"),
+		@ApiResponse(code = 401, message = "Unauthorized"),
+		@ApiResponse(code = 403, message = "Forbidden"),		
+		@ApiResponse(code = 404, message = "Not Found")})
     @RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
-        LOGGER.info("GET USUARIO | Iniciado | Obtem o usuário. Indenticador do usuário:" + login);
+        LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário. Indenticador do usuário: {}",login);
         String clienteId ="";
         validator.checkGetRequest(login, dataAlteracao, clienteId);
         Usuario usuario = service.getUsuario(login, dataAlteracao, clienteId);
         validator.checkGetResponse(usuario);
-        LOGGER.info("GET USUARIO | Concluído | Obtem o usuário.");
+        LOGGER.debug("GET USUARIO | Concluído | Obtem o usuário. Indenticador do usuário: {}",login);
         return new ResponseEntity<>(assembler.toResource(usuario),OK);
     }
 
