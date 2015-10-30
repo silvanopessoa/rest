@@ -41,6 +41,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.silvanopessoa.model.usuario.v1.UsuarioType;
+import br.com.silvanopessoa.rest.api.conf.swagger.ApplicationSwaggerConfig;
 import br.com.silvanopessoa.rest.api.validation.UsuarioValidator;
 import br.com.silvanopessoa.rest.model.Usuario;
 import br.com.silvanopessoa.rest.model.transformation.UsuarioResourceAssembler;
@@ -176,13 +177,8 @@ public class UsuarioController {
     @ApiOperation(
     		value = "Obtem um usuário pelo seu identificador.", 
     		notes = "<br><b>Descrição:</b> Obtem usuario pelo identificador informado.<br><br> <b>Clientes:</b> Todos.<br><b>Scope:</b> read<br><b>Roles System:</b> ROLE_CLIENT<br><b>Roles User:</b> ROLE_REST_USER_FIND<br><b>Tarefas:</b> <a href=\"https://github.com/silvanopessoa/rest\" target=\"_blank\">#1</a><br><b>Documentação Canônico:</b> Não informado.<br><b>Documentação Teste:</b> Não informado.<br><b>Tipos de Autenticação:</b> password<br>", 
-    		authorizations = @Authorization(value = "oauth2", scopes = { @AuthorizationScope(scope = "read", description = "read") }))
-    @ApiResponses(value = { 
-		@ApiResponse(code = 200, message = "OK"),
-		@ApiResponse(code = 304, message = "Not Modified"),
-		@ApiResponse(code = 401, message = "Unauthorized"),
-		@ApiResponse(code = 403, message = "Forbidden"),		
-		@ApiResponse(code = 404, message = "Not Found")})
+    				authorizations = {@Authorization(value = ApplicationSwaggerConfig.securityOAuth2, scopes =
+                {@AuthorizationScope( scope = "write", description = "write")})})
     @RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
         LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário. Identicador do usuário: {}",login);
