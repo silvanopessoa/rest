@@ -22,20 +22,17 @@
 		
 		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
 		
-<!-- 		<intercept-url pattern="/usuarios.*" access="isAuthenticated()" /> -->
-		<intercept-url pattern="/**" access="isAuthenticated()" />
-
 		<!-- salvar usuarios -->
-		<intercept-url method="POST" pattern="/usuarios" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write')" />
+		<intercept-url method="POST" pattern="/usuarios" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write') and isAuthenticated()" />
 
 		<!-- get usuario -->
-		<intercept-url method="GET" pattern="/usuarios(\/[^/]*?[^/]*)$" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('read')" />
+		<intercept-url method="GET" pattern="/usuarios(\/[^/]*?[^/]*)$" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('read') and isAuthenticated()" />
 
 		<!-- alterar usuario -->
-		<intercept-url method="PUT" pattern="/usuarios(\/[^/]*?[^/]*)$" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write')" />
+		<intercept-url method="PUT" pattern="/usuarios(\/[^/]*?[^/]*)$" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write') and isAuthenticated()" />
 
 		<!-- deletar usuario -->
-		<intercept-url method="DELETE" pattern="/usuarios(\/.*?[^/])" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write')" />
+		<intercept-url method="DELETE" pattern="/usuarios(\/.*?[^/])" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write') and isAuthenticated()" />
 
 		<!-- and hasRole('ROLE_CONNECT_READ_USER') -->
 		<access-denied-handler ref="oauthAccessDeniedHandler" />
