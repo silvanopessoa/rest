@@ -82,10 +82,12 @@ public class ApplicationSwaggerConfig {
         authorizationScopeList.add(new AuthorizationScope("write", "read and write"));
         
         List<GrantType> grantTypes = new ArrayList<>();
-        TokenRequestEndpoint tokenRequestEndpoint = new TokenRequestEndpoint("/oauth/token", "client_Id ", "client_secret" );
+//        TokenRequestEndpoint tokenRequestEndpoint = new TokenRequestEndpoint("/oauth/token", "client_Id ", "client_secret" );
+        TokenRequestEndpoint tokenRequestEndpoint = new TokenRequestEndpoint("/oauth/token", "0 ", "d0f3e83e-16ba-4272-88f8-78f131408bfb" );
         TokenEndpoint tokenEndpoint = new TokenEndpoint("/oauth/token", "theToken");
         
-        PasswordTokenRequestEndpoint passwordTokenRequestEndpoint = new PasswordTokenRequestEndpoint("/oauth/token", "client_Id ", "client_secret", "user", "password");
+        //PasswordTokenRequestEndpoint passwordTokenRequestEndpoint = new PasswordTokenRequestEndpoint("/oauth/token", "client_Id ", "client_secret", "user", "password");
+        PasswordTokenRequestEndpoint passwordTokenRequestEndpoint = new PasswordTokenRequestEndpoint("/oauth/token", "0 ", "d0f3e83e-16ba-4272-88f8-78f131408bfb", "silvano", "12345678");
         grantTypes.add(new OAuth2PasswordCredentialsGrantType(passwordTokenRequestEndpoint));
         grantTypes.add(new AuthorizationCodeGrant(tokenRequestEndpoint, tokenEndpoint));
         
@@ -96,7 +98,8 @@ public class ApplicationSwaggerConfig {
 
 	@Bean
 	public SecurityConfiguration securityConfiguration() {
-		SecurityConfiguration config = new SecurityConfiguration("yourclientid", "yourclientsercret", "yourrealm","yourappname", "yourapiKey", ",");
+//		SecurityConfiguration config = new SecurityConfiguration("yourclientid", "yourclientsercret", "yourrealm","yourappname", "yourapiKey", ",");
+		SecurityConfiguration config = new SecurityConfiguration("0", "d0f3e83e-16ba-4272-88f8-78f131408bfb", "rest-api","silvano", "12345678", ",");
 		return config;
 	}
 
