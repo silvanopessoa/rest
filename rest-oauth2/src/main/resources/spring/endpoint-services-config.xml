@@ -12,7 +12,7 @@
 		behaviour. -->
 	<!-- See docs for EL-based access control http://static.springsource.org/spring-security/site/docs/3.0.x/reference/el-access.html -->
 	<!-- USUARIOS -->
-	<http pattern="/usuarios(?!\/emails).*" 
+	<http pattern="/usuarios.*" 
 		request-matcher="regex" create-session="stateless" 
 		entry-point-ref="oauthAuthenticationEntryPoint"
 		use-expressions="true"
