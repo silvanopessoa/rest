@@ -20,8 +20,6 @@
 
 		<anonymous enabled="false" />
 		
-		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
-		
 		<!-- salvar usuarios -->
 		<intercept-url method="POST" pattern="/usuarios" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write') and isAuthenticated()" />
 
@@ -35,6 +33,7 @@
 		<intercept-url method="DELETE" pattern="/usuarios(\/.*?[^/])" access="#oauth2.clientHasRole('ROLE_CLIENT') and #oauth2.isUser() and #oauth2.hasScope('write') and isAuthenticated()" />
 
 		<!-- and hasRole('ROLE_CONNECT_READ_USER') -->
+		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
 		<access-denied-handler ref="oauthAccessDeniedHandler" />
 		<expression-handler ref="oauthWebExpressionHandler" />
 	</http>

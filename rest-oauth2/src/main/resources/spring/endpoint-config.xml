@@ -28,8 +28,5 @@
 	<bean id="oauthAuthenticationEntryPoint" class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint">
 		<property name="realmName" value="rest-api" />
 	</bean>
-	
-	<!-- Loads an instance of OAuth2AuthenticationProcessingFilter. If resource-id is set, then only tokens that contains this resource id will be accepted. -->
-	<oauth:resource-server id="resourceServerFilter" resource-id="rest-api" token-services-ref="defaultTokenServices" />
 
 </beans>
