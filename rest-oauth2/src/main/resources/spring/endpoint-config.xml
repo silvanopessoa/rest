@@ -29,4 +29,11 @@
 		<property name="realmName" value="rest-api" />
 	</bean>
 
+<!-- 	<bean id="oauthExpressionHandler" class="org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler" /> -->
+
+<!-- 	<bean id="permissionEvaluator" class="org.springframework.security.access.expression.DenyAllPermissionEvaluator" /> -->
+
+<!-- 	<bean id="oAuth2WebSecurityExpressionHandler" class="org.springframework.security.oauth2.provider.expression.OAuth2WebSecurityExpressionHandler"> -->
+<!-- 		<property name="permissionEvaluator" ref="permissionEvaluator" /> -->
+<!-- 	</bean> -->
 </beans>

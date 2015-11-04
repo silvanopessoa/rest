@@ -34,12 +34,11 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 import io.swagger.annotations.AuthorizationScope;
 
-import javax.annotation.security.RolesAllowed;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -191,7 +190,8 @@ public class UsuarioController {
 		@ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 304, message = "Not Modified"),
 		@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),		
 		@ApiResponse(code = 404, message = "Not Found")})
-	@RolesAllowed({"ROLE_REST_USER_FIND"})
+//	@RolesAllowed({"ROLE_REST_USER_FIND"})
+	@PreAuthorize("hasRole('ROLE_REST_USER_FIND')")
 	@RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
 		LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário.");
