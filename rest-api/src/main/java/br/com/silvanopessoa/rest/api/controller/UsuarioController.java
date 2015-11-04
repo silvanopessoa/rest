@@ -12,6 +12,8 @@
  *****************************************************************************/
 package br.com.silvanopessoa.rest.api.controller;
 
+import static br.com.silvanopessoa.rest.api.controller.doc.Doc.READ_DESCRIPTION;
+import static br.com.silvanopessoa.rest.api.controller.doc.Doc.READ_SCOPE;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_NOTES_GET_BY_LOGIN;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_VALUE_GET_BY_LOGIN;
 import static br.com.silvanopessoa.rest.api.helper.IdentidadeHelper.getClienteIdFromAuth;
@@ -184,12 +186,12 @@ public class UsuarioController {
     		notes = USUARIO_NOTES_GET_BY_LOGIN, 
     		authorizations = {@Authorization(
     			value = ApplicationSwaggerConfig.securityOAuth2, 
-				scopes = {@AuthorizationScope( scope = "read", description = "read")})})
+				scopes = {@AuthorizationScope( scope = READ_SCOPE, description = READ_DESCRIPTION)})})
 	@ApiResponses(value = { 
 		@ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 304, message = "Not Modified"),
 		@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),		
 		@ApiResponse(code = 404, message = "Not Found")})
-	@RolesAllowed({ "ROLE_REST_USER_FIND" })
+	@RolesAllowed({"ROLE_REST_USER_FIND"})
 	@RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
 		LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário.");
