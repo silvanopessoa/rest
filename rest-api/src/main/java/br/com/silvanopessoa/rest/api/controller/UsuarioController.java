@@ -12,6 +12,9 @@
  *****************************************************************************/
 package br.com.silvanopessoa.rest.api.controller;
 
+import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_NOTES_GET_BY_LOGIN;
+import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_VALUE_GET_BY_LOGIN;
+import static br.com.silvanopessoa.rest.api.helper.IdentidadeHelper.getClienteIdFromAuth;
 import static br.com.silvanopessoa.rest.lang.base.PreconditionsRest.checkNotFound;
 import static org.apache.http.HttpHeaders.IF_MODIFIED_SINCE;
 import static org.springframework.http.HttpStatus.CREATED;
@@ -117,7 +120,7 @@ public class UsuarioController {
     @RequestMapping(method=PUT, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> updateUsuario(@PathVariable("login") String login, @RequestBody UsuarioType usuario){
         LOGGER.info("PUT USUARIO | Iniciado | Alterar usuário. Usuário: "+login+" Entity:" + usuario);
-        String clienteId ="";//TODO: IMPLEMENTAR
+        String clienteId = getClienteIdFromAuth();
         validator.checkUpdateRequest(login, usuario);
         ResponseEntity<Void> responseEntity = this.createUsuarioOrUpdateUsuario(login, usuario,clienteId);
         LOGGER.info("PUT USUARIO | Concluido | Alterar usuário. Usuário: "+login);
@@ -161,7 +164,7 @@ public class UsuarioController {
     @RequestMapping(value = "/{login}", method = DELETE, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public void deleteUsuario(@PathVariable("login") String login) {
         LOGGER.info("DELETE USUARIO | Iniciado | Usuário:" + login);
-        String clienteId ="";//TODO: IMPLEMENTAR
+        String clienteId = getClienteIdFromAuth();
         validator.checkDeleteRequest(login, clienteId);
         checkNotFound(service.findByLoginAndClienteId(login, clienteId),msg.deleteCheckNotFoundMessage(login));
         service.deleteUsuario(login, clienteId);
@@ -177,8 +180,8 @@ public class UsuarioController {
      * @return o(a) usuario
      */
 	@ApiOperation(
-    		value = "Obtem um usuário pelo seu identificador.", 
-    		notes = "<br><b>Descrição:</b> Obtem usuario pelo identificador informado.<br><br> <b>Clientes:</b> Todos.<br><b>Scope:</b> read<br><b>Roles System:</b> ROLE_CLIENT<br><b>Roles User:</b> ROLE_REST_USER_FIND<br><b>Tarefas:</b> <a href=\"https://github.com/silvanopessoa/rest\" target=\"_blank\">#1</a><br><b>Documentação Canônico:</b> Não informado.<br><b>Documentação Teste:</b> Não informado.<br><b>Tipos de Autenticação:</b> password<br>", 
+    		value = USUARIO_VALUE_GET_BY_LOGIN, 
+    		notes = USUARIO_NOTES_GET_BY_LOGIN, 
     		authorizations = {@Authorization(
     			value = ApplicationSwaggerConfig.securityOAuth2, 
 				scopes = {@AuthorizationScope( scope = "read", description = "read")})})
@@ -189,13 +192,16 @@ public class UsuarioController {
 	@RolesAllowed({ "ROLE_REST_USER_FIND" })
 	@RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
-        LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário. Identicador do usuário: {}",login);
-        String clienteId ="";
+		LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário.");
+		String clienteId = getClienteIdFromAuth();
+        LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário. Identicador do usuário: {}, data alteracao: {}, cliente: {}",login,dataAlteracao,clienteId);
         validator.checkGetRequest(login, dataAlteracao, clienteId);
         Usuario usuario = service.getUsuario(login, dataAlteracao, clienteId);
         validator.checkGetResponse(usuario);
-        LOGGER.debug("GET USUARIO | Concluído | Obtem o usuário. Identicador do usuário: {}",login);
-        return new ResponseEntity<>(assembler.toResource(usuario),OK);
+        UsuarioType resource = assembler.toResource(usuario);
+        LOGGER.debug("GET USUARIO | Concluído | Obtem o usuário. Identicador do usuário: {}, data alteracao: {}, cliente: {}, resultado: {}",login,dataAlteracao,clienteId,resource);
+        return new ResponseEntity<>(resource,OK);
     }
+
 
 }

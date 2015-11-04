@@ -40,7 +40,7 @@ public class Usuario extends AbstractPersistable<String> implements UserDetails{
     private DateTime dataAlteracao;
     
     /** O(a)(s) cliente id. */
-    private Integer clienteId;
+    private String clienteId;
     
     /** O(a)(s) enabled. */
     private Boolean enabled;
@@ -69,7 +69,7 @@ public class Usuario extends AbstractPersistable<String> implements UserDetails{
      *
      * @return O(a)(s) cliente id
      */
-    public Integer getClienteId() {
+    public String getClienteId() {
 		return clienteId;
 	}
 
@@ -78,7 +78,7 @@ public class Usuario extends AbstractPersistable<String> implements UserDetails{
 	 *
 	 * @param clienteId o novo valor do(a)(s) cliente id
 	 */
-	public void setClienteId(Integer clienteId) {
+	public void setClienteId(String clienteId) {
 		this.clienteId = clienteId;
 	}
 
