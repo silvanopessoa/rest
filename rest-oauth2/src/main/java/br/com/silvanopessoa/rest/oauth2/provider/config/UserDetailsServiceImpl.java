@@ -12,8 +12,13 @@
  *****************************************************************************/
 package br.com.silvanopessoa.rest.oauth2.provider.config;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
@@ -48,6 +53,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     	usuario.setAccountNonLocked(true);
     	usuario.setEnabled(true);
     	usuario.setClienteId("2315");
+    	
+//    	GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_REST_USER_FIND");
+//    	Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+//    	authorities.add(authority);
+//    	usuario.setAuthorities(authorities);
+    	
     	return usuario;
     }
 }

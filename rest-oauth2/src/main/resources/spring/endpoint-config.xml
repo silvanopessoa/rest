@@ -12,7 +12,7 @@
 	<!-- https://gist.github.com/ddewaele/6411612 -->
 	<!-- @PreAuthorize("hasRole('ROLE_ADMIN') and #oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasRole('ROLE_ADMIN'))") -->
 	<!--you could also wire in the expression handler up at the layer of the http filters. See https://jira.springsource.org/browse/SEC-1452 -->
-	<sec:global-method-security	pre-post-annotations="enabled" proxy-target-class="true">
+	<sec:global-method-security jsr250-annotations="enabled"	pre-post-annotations="enabled" proxy-target-class="true">
 		<sec:expression-handler ref="oauthExpressionHandler"/>
 	</sec:global-method-security>
 
@@ -29,11 +29,4 @@
 		<property name="realmName" value="rest-api" />
 	</bean>
 
-<!-- 	<bean id="oauthExpressionHandler" class="org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler" /> -->
-
-<!-- 	<bean id="permissionEvaluator" class="org.springframework.security.access.expression.DenyAllPermissionEvaluator" /> -->
-
-<!-- 	<bean id="oAuth2WebSecurityExpressionHandler" class="org.springframework.security.oauth2.provider.expression.OAuth2WebSecurityExpressionHandler"> -->
-<!-- 		<property name="permissionEvaluator" ref="permissionEvaluator" /> -->
-<!-- 	</bean> -->
 </beans>
