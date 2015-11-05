@@ -36,6 +36,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.SecurityConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ApplicationSwaggerConfig.
+ */
 @EnableSwagger2
 public class ApplicationSwaggerConfig {
 
@@ -74,6 +78,11 @@ public class ApplicationSwaggerConfig {
 		return apiInfo;
 	}
 	
+	/**
+	 * Security schema.
+	 *
+	 * @return O(a)(s) list
+	 */
 	private List<SecurityScheme> securitySchema() {
 		ArrayList<SecurityScheme> authorizationTypes = new ArrayList<>();
 		
@@ -82,12 +91,12 @@ public class ApplicationSwaggerConfig {
         authorizationScopeList.add(new AuthorizationScope("write", "read and write"));
         
         List<GrantType> grantTypes = new ArrayList<>();
-//        TokenRequestEndpoint tokenRequestEndpoint = new TokenRequestEndpoint("/oauth/token", "client_Id ", "client_secret" );
-        TokenRequestEndpoint tokenRequestEndpoint = new TokenRequestEndpoint("/oauth/token", "0 ", "d0f3e83e-16ba-4272-88f8-78f131408bfb" );
+        TokenRequestEndpoint tokenRequestEndpoint = new TokenRequestEndpoint("/rest-api/oauth/token", "client_Id ", "client_secret" );
+        //TokenRequestEndpoint tokenRequestEndpoint = new TokenRequestEndpoint("/rest-api/oauth/token", "0 ", "d0f3e83e-16ba-4272-88f8-78f131408bfb" );
         TokenEndpoint tokenEndpoint = new TokenEndpoint("/oauth/token", "theToken");
         
-        //PasswordTokenRequestEndpoint passwordTokenRequestEndpoint = new PasswordTokenRequestEndpoint("/oauth/token", "client_Id ", "client_secret", "user", "password");
-        PasswordTokenRequestEndpoint passwordTokenRequestEndpoint = new PasswordTokenRequestEndpoint("/oauth/token", "0 ", "d0f3e83e-16ba-4272-88f8-78f131408bfb", "silvano", "12345678");
+        PasswordTokenRequestEndpoint passwordTokenRequestEndpoint = new PasswordTokenRequestEndpoint("/oauth/token", "client_Id ", "client_secret", "silvano", "12345678");
+        //PasswordTokenRequestEndpoint passwordTokenRequestEndpoint = new PasswordTokenRequestEndpoint("/rest-api/oauth/token", "0 ", "d0f3e83e-16ba-4272-88f8-78f131408bfb", "silvano", "12345678");
         grantTypes.add(new OAuth2PasswordCredentialsGrantType(passwordTokenRequestEndpoint));
         grantTypes.add(new AuthorizationCodeGrant(tokenRequestEndpoint, tokenEndpoint));
         
@@ -96,47 +105,101 @@ public class ApplicationSwaggerConfig {
         return authorizationTypes;
 	}
 
+	/**
+	 * Security configuration.
+	 *
+	 * @return O(a)(s) security configuration
+	 */
 	@Bean
 	public SecurityConfiguration securityConfiguration() {
 //		SecurityConfiguration config = new SecurityConfiguration("yourclientid", "yourclientsercret", "yourrealm","yourappname", "yourapiKey", ",");
-		SecurityConfiguration config = new SecurityConfiguration("0", "d0f3e83e-16ba-4272-88f8-78f131408bfb", "rest-api","silvano", "12345678", ",");
+		SecurityConfiguration config = new SecurityConfiguration("12", "d0f3e83e-16ba-4272-88f8-78f131408bfb", "rest-api","silvano", "12345678", ",");
 		return config;
 	}
 
+	/**
+	 * Security context.
+	 *
+	 * @return O(a)(s) security context
+	 */
 	private SecurityContext securityContext() {
 		return SecurityContext.builder().securityReferences(defaultAuth()).build();
 	}
 
+	/**
+	 * Default auth.
+	 *
+	 * @return O(a)(s) list
+	 */
 	private List<SecurityReference> defaultAuth() {
 		AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
 		authorizationScopes[0] = new AuthorizationScope("write", "write");
 		return newArrayList(new SecurityReference(securityOAuth2, authorizationScopes));
 	}
 
+	/**
+	 * The Class PasswordTokenRequestEndpoint.
+	 */
 	private class PasswordTokenRequestEndpoint extends TokenRequestEndpoint {
-	    private final String _username;
-	    private final String _password;
-	    public PasswordTokenRequestEndpoint(String url, String clientIdName,
+	    
+    	/** O(a)(s) _username. */
+    	private final String _username;
+	    
+    	/** O(a)(s) _password. */
+    	private final String _password;
+	    
+    	/**
+    	 * Instancia um novo(a) password token request endpoint.
+    	 *
+    	 * @param url O(a)(s) url
+    	 * @param clientIdName O(a)(s) client id name
+    	 * @param clientSecretName O(a)(s) client secret name
+    	 * @param username O(a)(s) username
+    	 * @param password O(a)(s) password
+    	 */
+    	public PasswordTokenRequestEndpoint(String url, String clientIdName,
 	            String clientSecretName, String username, String password) {
 
 	        super(url, clientIdName, clientSecretName);
 	        this._username = username;
 	        this._password = password;
 	    }
-	    @SuppressWarnings("unused")
+	    
+    	/**
+    	 * Obtém o valor do(a)(s) username.
+    	 *
+    	 * @return O(a)(s) username
+    	 */
+    	@SuppressWarnings("unused")
 	    public String getUsername() {
 	        return _username;
 	    }
-	    @SuppressWarnings("unused")
+	    
+    	/**
+    	 * Obtém o valor do(a)(s) password.
+    	 *
+    	 * @return O(a)(s) password
+    	 */
+    	@SuppressWarnings("unused")
 	    public String getPassword() {
 	        return _password;
 	    }
 	}
 	
+	/**
+	 * The Class OAuth2PasswordCredentialsGrantType.
+	 */
 	private class OAuth2PasswordCredentialsGrantType extends ResourceOwnerPasswordCredentialsGrant {
+        
+        /** O(a)(s) _token request endpoint. */
         @SuppressWarnings("unused")
         private final PasswordTokenRequestEndpoint _tokenRequestEndpoint;
 
+        /**
+         * Instancia um novo(a) o auth2 password credentials grant type.
+         *
+         * @param tokenRequestEndpoint O(a)(s) token request endpoint
+         */
         public OAuth2PasswordCredentialsGrantType(PasswordTokenRequestEndpoint tokenRequestEndpoint) {
             super("password");
             this._tokenRequestEndpoint = tokenRequestEndpoint;
