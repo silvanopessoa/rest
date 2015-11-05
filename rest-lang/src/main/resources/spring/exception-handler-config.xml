@@ -43,6 +43,9 @@
 				<entry key="org.springframework.http.InvalidMediaTypeException">
 					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceInvalidMediaTypeHandler"/>
 				</entry>
+				<entry key="org.springframework.security.access.AccessDeniedException">
+					<bean class="br.com.silvanopessoa.rest.lang.exception.handler.ResourceAccessDeniedExceptionHandler"/>
+				</entry>
 			</map>
 		</property>
 	</bean>

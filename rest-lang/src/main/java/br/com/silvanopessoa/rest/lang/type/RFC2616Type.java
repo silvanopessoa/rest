@@ -53,7 +53,13 @@ public final class RFC2616Type {
     /** A Constante UNSUPPORTED_MEDIA_TYPE. */
     public static final String UNSUPPORTED_MEDIA_TYPE_SPEC = "http://tools.ietf.org/html/rfc2616#section-10.4.16";
     
+    /** A Constante FORBIDDEN_SPEC. */
+    public static final String FORBIDDEN_SPEC = "http://tools.ietf.org/html/rfc2616#section-10.4.4";
+    
     /** A Constante UNSUPPORTED_MEDIA_TYPE_URI. */
     public static final String UNSUPPORTED_MEDIA_TYPE_URI = "br/com/silvanopessoa/rest/clienterror/unsupportedmediatype";
+    
+    /** A Constante FORBIDDEN_URI. */
+    public static final String FORBIDDEN_URI = "br/com/silvanopessoa/rest/clienterror/forbidden";
 
 }

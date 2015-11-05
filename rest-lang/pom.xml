@@ -69,6 +69,14 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate-core-version}</version>
 		</dependency>
+		
+		<!-- 07 - SPRING OAUTH2 -->
+		<!-- http://projects.spring.io/spring-security-oauth/docs/downloads.html -->
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>${spring-security-oauth2-version}</version>
+		</dependency>
 
 	</dependencies>
 </project>
