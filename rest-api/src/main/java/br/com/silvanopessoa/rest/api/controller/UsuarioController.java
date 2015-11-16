@@ -43,18 +43,15 @@ import javax.annotation.security.RolesAllowed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.silvanopessoa.model.usuario.v1.UsuarioType;
 import br.com.silvanopessoa.rest.api.conf.swagger.ApplicationSwaggerConfig;
-import br.com.silvanopessoa.rest.api.controller.doc.Doc;
 import br.com.silvanopessoa.rest.api.validation.UsuarioValidator;
 import br.com.silvanopessoa.rest.model.Usuario;
 import br.com.silvanopessoa.rest.model.transformation.UsuarioResourceAssembler;
@@ -184,10 +181,11 @@ public class UsuarioController {
     public ResponseEntity<Void> deleteUsuario(@PathVariable("login") String login) {
         LOGGER.info("DELETE USUARIO | Iniciado | Inativa o usuário:{}",login);
         String clienteId = getClienteIdFromAuth();
+        LOGGER.info("DELETE USUARIO | Identificador | Inativa o usuário: {}, cliente: {}",login,clienteId);
         validator.checkDeleteRequest(login, clienteId);
         checkNotFound(service.findByLoginAndClienteId(login, clienteId),msg.deleteCheckNotFoundMessage(login));
         service.deleteUsuario(login, clienteId);
-        LOGGER.info("DELETE USUARIO | Concluído | Inativa o usuário:{}",login);
+        LOGGER.info("DELETE USUARIO | Concluído | Inativa o usuário: {}, cliente: {}",login,clienteId);
 		return new ResponseEntity<>(NO_CONTENT);
     }
     
