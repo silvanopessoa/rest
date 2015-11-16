@@ -182,12 +182,12 @@ public class UsuarioController {
 	@RolesAllowed({"ROLE_REST_USER_DELETE"})
     @RequestMapping(value = "/{login}", method = DELETE, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> deleteUsuario(@PathVariable("login") String login) {
-        LOGGER.info("DELETE USUARIO | Iniciado | Inativa o usuário:" + login);
+        LOGGER.info("DELETE USUARIO | Iniciado | Inativa o usuário:{}",login);
         String clienteId = getClienteIdFromAuth();
         validator.checkDeleteRequest(login, clienteId);
         checkNotFound(service.findByLoginAndClienteId(login, clienteId),msg.deleteCheckNotFoundMessage(login));
         service.deleteUsuario(login, clienteId);
-        LOGGER.info("DELETE USUARIO | Concluído | Usuário:" + login);
+        LOGGER.info("DELETE USUARIO | Concluído | Inativa o usuário:{}",login);
 		return new ResponseEntity<>(NO_CONTENT);
     }
     
