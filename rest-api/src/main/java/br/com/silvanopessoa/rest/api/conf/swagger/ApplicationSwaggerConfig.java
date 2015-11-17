@@ -17,11 +17,11 @@ import static com.google.common.collect.Lists.newArrayList;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.springframework.context.annotation.Bean;
 
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.AuthorizationCodeGrant;
-
 import springfox.documentation.service.AuthorizationScope;
 import springfox.documentation.service.GrantType;
 import springfox.documentation.service.OAuth;
@@ -36,7 +36,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.SecurityConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationSwaggerConfig.
  */
@@ -56,6 +55,7 @@ public class ApplicationSwaggerConfig {
 	@Bean
 	public Docket restApi() {
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
+				.directModelSubstitute(DateTime.class, String.class)
 				.securitySchemes(securitySchema())
 				.securityContexts(newArrayList(securityContext()));
 	}

@@ -143,10 +143,10 @@ public class UsuarioController {
     protected ResponseEntity<Void> createUsuarioOrUpdateUsuario(String login, UsuarioType usuario, String clienteId){
         ResponseEntity<Void> responseEntity;
         if(service.isNewUsuario(login,clienteId)){
-            LOGGER.info("PUT USUARIO | O usuário é novo e será criado. Usuário: "+login+" Entity:" + usuario);
+            LOGGER.info("PUT USUARIO | O usuário é novo e será criado. Usuário:{} Entity:{}",login,usuario);
             responseEntity = this.createUsuario(usuario);
         }else{
-            LOGGER.info("PUT USUARIO | O usuário será atualizado. Usuário: "+login+" Entity:" + usuario);
+            LOGGER.info("PUT USUARIO | O usuário será atualizado. Usuário:{} Entity:{}",login,usuario);
             Usuario usuarioEntity = assembler.toEntity(usuario);
             Usuario usuarioAlterado = service.updateUsuario(login, usuarioEntity, clienteId);
             responseEntity = new ResponseEntity<Void>(header.updateHeaders(usuarioAlterado), NO_CONTENT);
