@@ -121,13 +121,11 @@ public class UsuarioController {
     /**
      * Atualiza o(a) usuario.
      *  
-     *
-     * @author silvano.pessoa
-     * 
      * @param login O(a)(s) login
      * @param usuario O(a)(s) usuario
      * @return O(a)(s) response entity
      * 
+     * @author silvano.pessoa
      * @see Spec - http://restpatterns.org/HTTP_Methods/PUT
      * @see ROLE - UserDetailsServiceImpl
      */
@@ -186,6 +184,7 @@ public class UsuarioController {
      * 
      * @author silvano.pessoa
      * @see http://restpatterns.org/HTTP_Methods/DELETE
+     * @see ROLE - UserDetailsServiceImpl
      */
 	@ApiOperation(
     		value = USUARIO_VALUE_DELETE_BY_LOGIN, 
@@ -224,6 +223,7 @@ public class UsuarioController {
      * 
      * @author silvano.pessoa
      * @see http://www.restpatterns.org/HTTP_Methods/GET
+     * @see ROLE - UserDetailsServiceImpl
      */
 	@ApiOperation(
     		value = USUARIO_VALUE_GET_BY_LOGIN, 
