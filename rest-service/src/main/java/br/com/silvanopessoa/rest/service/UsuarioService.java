@@ -90,8 +90,9 @@ public class UsuarioService {
 	 * Salvar usuario.
 	 *
 	 * @param usuarioEntity O(a)(s) usuario entity
+	 * @param clienteId O(a)(s) cliente id
 	 */
-	public void salvarUsuario(Usuario usuarioEntity) {
+	public void salvarUsuario(Usuario usuarioEntity, String clienteId) {
 		
 	}
 }

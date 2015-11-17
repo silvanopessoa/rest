@@ -16,8 +16,10 @@ import static br.com.silvanopessoa.rest.api.controller.doc.Doc.READ_DESCRIPTION;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.READ_SCOPE;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_NOTES_DELETE_BY_LOGIN;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_NOTES_GET_BY_LOGIN;
+import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_NOTES_PUT;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_VALUE_DELETE_BY_LOGIN;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_VALUE_GET_BY_LOGIN;
+import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_VALUE_PUT;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.WRITE_DESCRIPTION;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.WRITE_SCOPE;
 import static br.com.silvanopessoa.rest.api.helper.IdentidadeHelper.getClienteIdFromAuth;
@@ -108,9 +110,10 @@ public class UsuarioController {
     @RequestMapping(method = POST, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> createUsuario(@RequestBody UsuarioType usuario) {
         LOGGER.info("POST USUARIO | Iniciado | Salvar usuário. Entity:" + usuario);
+        String clienteId = getClienteIdFromAuth();
         validator.checkCreateRequest(usuario);
         Usuario usuarioEntity = assembler.toEntity(usuario);
-        service.salvarUsuario(usuarioEntity);
+        service.salvarUsuario(usuarioEntity,clienteId);
         LOGGER.info("POST USUARIO | Concluido | Salvar usuário." + usuario);
         return new ResponseEntity<Void>(header.createHeaders(usuarioEntity), CREATED);
     }
@@ -118,17 +121,38 @@ public class UsuarioController {
     /**
      * Atualiza o(a) usuario.
      *  
+     *
      * @author silvano.pessoa
      * 
-     * @see http://restpatterns.org/HTTP_Methods/PUT
+     * @param login O(a)(s) login
+     * @param usuario O(a)(s) usuario
+     * @return O(a)(s) response entity
+     * 
+     * @see Spec - http://restpatterns.org/HTTP_Methods/PUT
+     * @see ROLE - UserDetailsServiceImpl
      */
+	@ApiOperation(
+    		value = USUARIO_VALUE_PUT, 
+    		notes = USUARIO_NOTES_PUT, 
+    		authorizations = {@Authorization(
+    			value = ApplicationSwaggerConfig.securityOAuth2, 
+				scopes = {@AuthorizationScope( scope = WRITE_SCOPE, description = WRITE_DESCRIPTION)})})
+	@ApiResponses(value = { 
+		@ApiResponse(code = 200, message = "OK"),
+		@ApiResponse(code = 201, message = "Created"),
+		@ApiResponse(code = 204, message = "No Content"), 
+		@ApiResponse(code = 401, message = "Unauthorized"), 
+		@ApiResponse(code = 403, message = "Forbidden"),		
+		@ApiResponse(code = 404, message = "Not Found"),
+		@ApiResponse(code = 422, message = "Unprocessable Entity")})
+	@RolesAllowed({"ROLE_REST_USER_CHANGE"})
     @RequestMapping(method=PUT, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> updateUsuario(@PathVariable("login") String login, @RequestBody UsuarioType usuario){
-        LOGGER.info("PUT USUARIO | Iniciado | Alterar usuário. Usuário: "+login+" Entity:" + usuario);
+        LOGGER.info("PUT USUARIO | Iniciado | Alterar usuário. Usuário:{}, Entity:{}",usuario,login);
         String clienteId = getClienteIdFromAuth();
         validator.checkUpdateRequest(login, usuario);
         ResponseEntity<Void> responseEntity = this.createUsuarioOrUpdateUsuario(login, usuario,clienteId);
-        LOGGER.info("PUT USUARIO | Concluido | Alterar usuário. Usuário: "+login);
+        LOGGER.info("PUT USUARIO | Concluido | Alterar usuário. Usuário:{}, Entity:{}",usuario,login);
         return responseEntity;
     }
     
@@ -175,7 +199,8 @@ public class UsuarioController {
 		@ApiResponse(code = 204, message = "No Content"), 
 		@ApiResponse(code = 401, message = "Unauthorized"), 
 		@ApiResponse(code = 403, message = "Forbidden"),		
-		@ApiResponse(code = 404, message = "Not Found")})
+		@ApiResponse(code = 404, message = "Not Found"),
+		@ApiResponse(code = 422, message = "Unprocessable Entity")})
 	@RolesAllowed({"ROLE_REST_USER_DELETE"})
     @RequestMapping(value = "/{login}", method = DELETE, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> deleteUsuario(@PathVariable("login") String login) {
@@ -211,7 +236,8 @@ public class UsuarioController {
 		@ApiResponse(code = 304, message = "Not Modified"),
 		@ApiResponse(code = 401, message = "Unauthorized"), 
 		@ApiResponse(code = 403, message = "Forbidden"),		
-		@ApiResponse(code = 404, message = "Not Found")})
+		@ApiResponse(code = 404, message = "Not Found"),
+		@ApiResponse(code = 422, message = "Unprocessable Entity")})
 	@RolesAllowed({"ROLE_REST_USER_FIND"})
 	@RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
@@ -225,6 +251,5 @@ public class UsuarioController {
         LOGGER.debug("GET USUARIO | Concluído | Obtem o usuário. Identicador do usuário: {}, cliente: {}, data alteracao: {}, resultado: {}",login,clienteId,dataAlteracao,resource);
         return new ResponseEntity<>(resource,OK);
     }
-
 
 }

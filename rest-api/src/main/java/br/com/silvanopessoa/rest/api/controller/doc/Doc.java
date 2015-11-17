@@ -47,4 +47,10 @@ public final class Doc {
 	
 	/** A Constante USUARIO_NOTES_DELETE_BY_LOGIN. */
 	public static final String USUARIO_NOTES_DELETE_BY_LOGIN = "";
+	
+	/** A Constante USUARIO_VALUE_PUT. */
+	public static final String USUARIO_VALUE_PUT= "Altera um usuário.";
+
+	/** A Constante USUARIO_NOTES_PUT. */
+	public static final String USUARIO_NOTES_PUT= "";
 }
