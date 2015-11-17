@@ -53,4 +53,10 @@ public final class Doc {
 
 	/** A Constante USUARIO_NOTES_PUT. */
 	public static final String USUARIO_NOTES_PUT= "";
+
+	/** A Constante USUARIO_VALUE_POST. */
+	public static final String USUARIO_VALUE_POST= "";
+
+	/** A Constante USUARIO_NOTES_POST. */
+	public static final String USUARIO_NOTES_POST= "";
 }

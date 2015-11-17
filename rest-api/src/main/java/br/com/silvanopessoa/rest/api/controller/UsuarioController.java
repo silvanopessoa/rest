@@ -19,6 +19,7 @@ import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_NOTES_GET
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_NOTES_PUT;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_VALUE_DELETE_BY_LOGIN;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_VALUE_GET_BY_LOGIN;
+import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_VALUE_POST;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.USUARIO_VALUE_PUT;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.WRITE_DESCRIPTION;
 import static br.com.silvanopessoa.rest.api.controller.doc.Doc.WRITE_SCOPE;
@@ -107,6 +108,20 @@ public class UsuarioController {
      * @see http://azagorneanu.blogspot.com.br/2013/06/hateoas-using-spring-framework.html
      * @see http://restpatterns.org/HTTP_Methods/POST
      */
+	@ApiOperation(
+    		value = USUARIO_VALUE_POST, 
+    		notes = USUARIO_VALUE_POST, 
+    		authorizations = {@Authorization(
+    			value = ApplicationSwaggerConfig.securityOAuth2, 
+				scopes = {@AuthorizationScope( scope = WRITE_SCOPE, description = WRITE_DESCRIPTION)})})
+	@ApiResponses(value = { 
+		@ApiResponse(code = 200, message = "OK"),
+		@ApiResponse(code = 201, message = "Created"),
+		@ApiResponse(code = 401, message = "Unauthorized"), 
+		@ApiResponse(code = 403, message = "Forbidden"),		
+		@ApiResponse(code = 404, message = "Not Found"),
+		@ApiResponse(code = 422, message = "Unprocessable Entity")})
+    @RolesAllowed({"ROLE_REST_USER_CREATE"})
     @RequestMapping(method = POST, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> createUsuario(@RequestBody UsuarioType usuario) {
         LOGGER.info("POST USUARIO | Iniciado | Salvar usuário. Entity:" + usuario);
