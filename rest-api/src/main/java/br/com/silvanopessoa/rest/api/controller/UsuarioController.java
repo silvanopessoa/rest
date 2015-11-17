@@ -111,7 +111,7 @@ public class UsuarioController {
     public ResponseEntity<Void> createUsuario(@RequestBody UsuarioType usuario) {
         LOGGER.info("POST USUARIO | Iniciado | Salvar usuário. Entity:" + usuario);
         String clienteId = getClienteIdFromAuth();
-        validator.checkCreateRequest(usuario);
+        validator.checkCreateRequest(usuario,clienteId);
         Usuario usuarioEntity = assembler.toEntity(usuario);
         service.salvarUsuario(usuarioEntity,clienteId);
         LOGGER.info("POST USUARIO | Concluido | Salvar usuário." + usuario);
@@ -148,7 +148,7 @@ public class UsuarioController {
     public ResponseEntity<Void> updateUsuario(@PathVariable("login") String login, @RequestBody UsuarioType usuario){
         LOGGER.info("PUT USUARIO | Iniciado | Alterar usuário. Usuário:{}, Entity:{}",usuario,login);
         String clienteId = getClienteIdFromAuth();
-        validator.checkUpdateRequest(login, usuario);
+        validator.checkUpdateRequest(login, usuario,clienteId);
         ResponseEntity<Void> responseEntity = this.createUsuarioOrUpdateUsuario(login, usuario,clienteId);
         LOGGER.info("PUT USUARIO | Concluido | Alterar usuário. Usuário:{}, Entity:{}",usuario,login);
         return responseEntity;

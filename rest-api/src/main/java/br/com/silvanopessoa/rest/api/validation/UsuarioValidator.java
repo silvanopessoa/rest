@@ -28,22 +28,25 @@ import br.com.silvanopessoa.rest.model.Usuario;
 @Component
 public class UsuarioValidator{
     
+
     /**
      * Check create request.
      *
-     * @param usuario o(a) usuario
+     * @param usuario O(a)(s) usuario
+     * @param clienteId O(a)(s) cliente id
      */
-    public void checkCreateRequest(UsuarioType usuario){
+    public void checkCreateRequest(UsuarioType usuario, String clienteId){
         
     }
     
     /**
      * Check update request.
      *
-     * @param login o(a) login
-     * @param usuario o(a) usuario
+     * @param login O(a)(s) login
+     * @param usuario O(a)(s) usuario
+     * @param clienteId O(a)(s) cliente id
      */
-    public void checkUpdateRequest(String login, UsuarioType usuario){
+    public void checkUpdateRequest(String login, UsuarioType usuario, String clienteId){
         
     }
     
