@@ -264,7 +264,7 @@ public class Usuario extends AbstractPersistable<String> implements UserDetails{
 	//--------------------------------- TO_STRING/EQUALS/HASHCODE -------------------------------//
 	//-------------------------------------------------------------------------------------------//
 	
-    /* (non-Javadoc)
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

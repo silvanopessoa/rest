@@ -23,8 +23,15 @@
 			<artifactId>spring-security-core</artifactId>
 			<version>${spring-security-core-version}</version>
 		</dependency>
-
-
+		
+		<!-- 13 - TESTES -->
+		<!-- https://github.com/orien/bean-matchers -->
+		<dependency>
+		  <groupId>com.google.code.bean-matchers</groupId>
+		  <artifactId>bean-matchers</artifactId>
+		  <version>${bean-matchers-version}</version>
+		  <scope>test</scope>
+		</dependency>
 
 
 
