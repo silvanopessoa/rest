@@ -28,6 +28,12 @@ import br.com.silvanopessoa.rest.model.Usuario;
 @Component
 public class UsuarioValidator{
     
+	/**
+	 * Check client id.
+	 */
+	public void checkClientId(String clienteId){
+		
+	}
 
     /**
      * Check create request.
@@ -36,7 +42,7 @@ public class UsuarioValidator{
      * @param clienteId O(a)(s) cliente id
      */
     public void checkCreateRequest(UsuarioType usuario, String clienteId){
-        
+        this.checkClientId(clienteId);
     }
     
     /**
@@ -47,7 +53,7 @@ public class UsuarioValidator{
      * @param clienteId O(a)(s) cliente id
      */
     public void checkUpdateRequest(String login, UsuarioType usuario, String clienteId){
-        
+    	this.checkClientId(clienteId);
     }
     
     /**
@@ -57,7 +63,7 @@ public class UsuarioValidator{
      * @param clienteId o(a) cliente id
      */
     public void checkDeleteRequest(String login, String clienteId){
-        
+    	this.checkClientId(clienteId);
     }
     
     /**
@@ -68,7 +74,7 @@ public class UsuarioValidator{
      * @param clienteId o(a) cliente id
      */
     public void checkGetRequest(String login, String dataAlteracao, String clienteId){
-        
+    	this.checkClientId(clienteId);
     }
     
     /**
