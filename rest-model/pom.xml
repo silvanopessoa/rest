@@ -33,10 +33,11 @@
 		  <scope>test</scope>
 		</dependency>
 
+		<!-- http://www.jqno.nl/equalsverifier/ -->
 		<dependency>
-			<groupId>junit-addons</groupId>
-			<artifactId>junit-addons</artifactId>
-			<version>1.4</version>
+			<groupId>nl.jqno.equalsverifier</groupId>
+			<artifactId>equalsverifier</artifactId>
+			<version>1.7.5</version>
 			<scope>test</scope>
 		</dependency>
 		

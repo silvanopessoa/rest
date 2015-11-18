@@ -18,6 +18,8 @@ import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanEqualsFor;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanHashCodeFor;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSettersFor;
 import static org.hamcrest.MatcherAssert.assertThat;
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -40,23 +42,33 @@ public class UsuarioTest{
 	}
 	
 	/**
-	 * Deve_respeitar_contrato_equals.
+	 * Deve_respeitar_contrato_equals_para_os_campos_informados.
 	 * 
 	 * @see https://github.com/orien/bean-matchers#testing-the-equals-method
 	 */
 	@Test
-	public void deve_respeitar_contrato_equals(){
+	public void deve_respeitar_contrato_equals_para_os_campos_informados(){
 		assertThat(Usuario.class, hasValidBeanEqualsFor("id"));
 	}
-	
+
 	/**
-	 * Deve_respeitar_contrato_hashcode.
+	 * Deve_respeitar_contrato_hashcode_para_os_campos_informados.
 	 * 
 	 * @see https://github.com/orien/bean-matchers#testing-the-hashcode-method
 	 */
 	@Test
-	public void deve_respeitar_contrato_hashcode(){
+	public void deve_respeitar_contrato_hashcode_para_os_campos_informados(){
 		assertThat(Usuario.class, hasValidBeanHashCodeFor("id"));
+	}
+	
+	/**
+	 * Deve_respeitar_contrato_equals_hashcode.
+	 * 
+	 * @see http://www.jqno.nl/equalsverifier/
+	 */
+	@Test
+	public void deve_respeitar_contrato_equals_hashcode() {
+		EqualsVerifier.forClass(Usuario.class).suppress(Warning.STRICT_INHERITANCE).verify();
 	}
 	
 	/**
