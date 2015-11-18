@@ -27,7 +27,7 @@ import br.com.silvanopessoa.rest.beanmatchers.BeanMatcherRegisters;
 /**
  * The Class UsuarioTest.
  */
-public class UsuarioTest {
+public class UsuarioTest{
 
 	/**
 	 * Setup.
@@ -78,5 +78,5 @@ public class UsuarioTest {
 	public void deve_ter_get_set_para_algumas_propriedades(){
 		assertThat(Usuario.class, hasValidGettersAndSettersFor("clienteId","dataAlteracao","authorities","password"));
 	}
-	
+
 }
