@@ -39,6 +39,13 @@
 			<version>${equalsverifier-version}</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://github.com/six2six/fixture-factory -->
+		<dependency>
+			<groupId>br.com.six2six</groupId>
+			<artifactId>fixture-factory</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
 		
 
 
