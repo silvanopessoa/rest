@@ -55,6 +55,8 @@
 		<!-- 13 - TESTES -->
 		<!-- https://github.com/orien/bean-matchers -->
 		<bean-matchers-version>0.9</bean-matchers-version>
+		<!-- http://www.jqno.nl/equalsverifier/ -->
+		<equalsverifier-version>1.7.5</equalsverifier-version>
 		
 		<!-- 80 - BANCO DE DADOS -->
 		<spring-data-mongodb-version>1.7.0.RELEASE</spring-data-mongodb-version>

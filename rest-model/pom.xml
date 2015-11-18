@@ -32,12 +32,11 @@
 		  <version>${bean-matchers-version}</version>
 		  <scope>test</scope>
 		</dependency>
-
 		<!-- http://www.jqno.nl/equalsverifier/ -->
 		<dependency>
 			<groupId>nl.jqno.equalsverifier</groupId>
 			<artifactId>equalsverifier</artifactId>
-			<version>1.7.5</version>
+			<version>${equalsverifier-version}</version>
 			<scope>test</scope>
 		</dependency>
 		
