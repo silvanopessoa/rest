@@ -10,43 +10,31 @@
  *                                                                            *
  *                                                                            *
  *****************************************************************************/
-package br.com.silvanopessoa.rest.beanmatchers;
+package br.com.silvanopessoa.rest.test.util.fixturefactory.extension;
 
-import java.util.Random;
-
-import org.joda.time.DateTime;
-
-import com.google.code.beanmatchers.BeanMatchers;
-import com.google.code.beanmatchers.ValueGenerator;
+import br.com.silvanopessoa.rest.test.util.fixturefactory.extension.functions.JodaChronicFunction;
+import br.com.six2six.fixturefactory.Rule;
+import br.com.six2six.fixturefactory.function.Function;
 
 /**
- * The Class BeanMatcherRegisters.
- * 
- * @see https://github.com/orien/bean-matchers#generating-property-values 
+ * The Class CustomRule.
  */
-public class BeanMatcherRegisters {
-	
-	{
-	    BeanMatchers.registerValueGenerator(new ValueGenerator<DateTime>() {
-	        public DateTime generate() {
-	        	Random random = new Random();
-	            return new DateTime(random.nextLong()).withMillisOfSecond(0);  // Change to generate random instance
-	        }
-	    }, DateTime.class);
-		
-	}
-	
+public class CustomRule extends Rule{
+
 	/**
-	 * Instancia um novo(a) bean matcher registers.
+	 * Instancia um novo(a) custom rule.
 	 */
-	private BeanMatcherRegisters(){
+	public CustomRule() {
+		super();
 	}
 	
     /**
-     * Load.
+     * Joda instant.
+     *
+     * @param dateText O(a)(s) date text
+     * @return O(a)(s) function
      */
-    public static void load() {
-        new BeanMatcherRegisters();
+    public Function jodaInstant(String dateText) {
+        return new JodaChronicFunction(dateText);
     }
-
 }

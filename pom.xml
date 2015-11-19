@@ -57,6 +57,8 @@
 		<bean-matchers-version>0.9</bean-matchers-version>
 		<!-- http://www.jqno.nl/equalsverifier/ -->
 		<equalsverifier-version>1.7.5</equalsverifier-version>
+		<!-- https://github.com/six2six/fixture-factory -->
+		<fixture-factory-version>3.0.0</fixture-factory-version>
 		
 		<!-- 80 - BANCO DE DADOS -->
 		<spring-data-mongodb-version>1.7.0.RELEASE</spring-data-mongodb-version>
@@ -110,6 +112,7 @@
 	<!-- 03 - CONFIGURACOES BASICAS -->
 	<!-- Modulo de menor dependencia para maior -->
 	<modules>
+		<module>rest-test-util</module>
 		<module>rest-oauth2</module>
 		<module>rest-model</module>
 		<module>rest-dto</module>
@@ -135,7 +138,6 @@
 	</repositories>
 
 	<build>
-		<finalName>rest-api</finalName>
 		<plugins>
 			<!-- 03 - CONFIGURACOES BASICAS -->
 			<plugin>

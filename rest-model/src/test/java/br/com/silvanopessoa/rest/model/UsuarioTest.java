@@ -24,7 +24,7 @@ import nl.jqno.equalsverifier.Warning;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.silvanopessoa.rest.beanmatchers.BeanMatcherRegisters;
+import br.com.silvanopessoa.rest.test.util.beanmatchers.BeanMatcherRegisters;
 
 /**
  * The Class UsuarioTest.

@@ -23,36 +23,6 @@
 			<artifactId>spring-security-core</artifactId>
 			<version>${spring-security-core-version}</version>
 		</dependency>
-		
-		<!-- 13 - TESTES -->
-		<!-- https://github.com/orien/bean-matchers -->
-		<dependency>
-		  <groupId>com.google.code.bean-matchers</groupId>
-		  <artifactId>bean-matchers</artifactId>
-		  <version>${bean-matchers-version}</version>
-		  <scope>test</scope>
-		</dependency>
-		<!-- http://www.jqno.nl/equalsverifier/ -->
-		<dependency>
-			<groupId>nl.jqno.equalsverifier</groupId>
-			<artifactId>equalsverifier</artifactId>
-			<version>${equalsverifier-version}</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://github.com/six2six/fixture-factory -->
-		<dependency>
-			<groupId>br.com.six2six</groupId>
-			<artifactId>fixture-factory</artifactId>
-			<version>3.0.0</version>
-			<scope>test</scope>
-		</dependency>
-		
-
-
-
-
-
-
 
 
 	
@@ -69,5 +39,11 @@
 		</dependency>
 
 
+		<dependency>
+			<groupId>br.com.silvanopessoa.rest</groupId>
+			<artifactId>rest-test-util</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>
