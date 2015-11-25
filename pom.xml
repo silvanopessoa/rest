@@ -17,41 +17,54 @@
 
 		<!-- 00 - DEPENDENCIA DE MÓDULOS -->
 		<rest-modulo-version>0.0.1-SNAPSHOT</rest-modulo-version>
+		
 		<!-- 01 - SPRING FRAMEWORK -->
 		<!-- Spring - http://projects.spring.io/spring-framework/ -->
 		<spring-framework-version>4.1.5.RELEASE</spring-framework-version>
+		
 		<!-- 02 - TESTES -->
 		<junit-version>4.12</junit-version>
 		<reflections-version>0.9.9-RC1</reflections-version>
+		
 		<!-- 03 - CONFIGURACOES BASICAS -->
 		<java-version>1.7</java-version>
+		
 		<!-- 04 - XSD para Object Java -->
 		<jaxb2-maven-plugin-version>1.6</jaxb2-maven-plugin-version>
 		<schema-directory-config>${basedir}/../../canonico/src/main/resources/br/com/silvanopessoa/rest/canonico/v1</schema-directory-config>
 		<binding-directory-config>src/main/resources/br/com/silvanopessoa/rest/canonico/v1/xjb</binding-directory-config>
+		
 		<!-- 05 - TRATAMENTO DE EXCEPTIONS -->
 		<!-- http://tools.ietf.org/html/draft-nottingham-http-problem-06#section-3 -->
 		<!-- https://github.com/jirutka/spring-rest-exception-handler -->
 		<spring-rest-exception-handler-version>1.0.3</spring-rest-exception-handler-version>
 		<javax.servlet-api-version>3.1.0</javax.servlet-api-version>
+		
 		<!-- 06 - REST -->
 		<httpcore-version>4.3.2</httpcore-version>
+		
 		<!-- 07 - SPRING SECURITY / OAUTH2 -->
 		<spring-security-oauth2-version>2.0.7.RELEASE</spring-security-oauth2-version>
 		<spring-security-core-version>3.2.6.RELEASE</spring-security-core-version>
+		
 		<!-- 08 - HIBERNATE / ANNOTATION -->
 		<hibernate-core-version>4.3.6.Final</hibernate-core-version>
+		
 		<!-- 09 - SPRING HATEOAS -->
 		<spring-hateoas-version>0.16.0.RELEASE</spring-hateoas-version>
+		
 		<!-- 10 - JACKSON CONFIGURACAO XML/JSON -->
 		<jackson-version>2.3.5</jackson-version>
 		<jackson-mapper-asl-version>1.9.13</jackson-mapper-asl-version>
 		<jackson-datatype-joda-version>2.6.1</jackson-datatype-joda-version>
+		
 		<!-- 11 - SWAGGER -->
 		<!-- http://springfox.github.io/springfox/docs/current/ -->
 		<springfox-swagger2-version>2.2.3-SNAPSHOT</springfox-swagger2-version>
+		
 		<!-- 12 - LOGGER -->
 		<logback-classic-version>1.1.3</logback-classic-version>
+		
 		<!-- 13 - TESTES -->
 		<!-- https://github.com/orien/bean-matchers -->
 		<bean-matchers-version>0.9</bean-matchers-version>
@@ -59,6 +72,8 @@
 		<equalsverifier-version>1.7.5</equalsverifier-version>
 		<!-- https://github.com/six2six/fixture-factory -->
 		<fixture-factory-version>3.0.0</fixture-factory-version>
+		<!--http://maven.apache.org/guides/mini/guide-attached-tests.html -->
+		<maven-jar-plugin-version>2.6</maven-jar-plugin-version>
 		
 		<!-- 80 - BANCO DE DADOS -->
 		<spring-data-mongodb-version>1.7.0.RELEASE</spring-data-mongodb-version>

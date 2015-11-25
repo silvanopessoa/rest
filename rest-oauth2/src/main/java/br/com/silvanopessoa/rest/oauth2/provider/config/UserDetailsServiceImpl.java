@@ -52,7 +52,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     	usuario.setPassword("$2a$10$aSD/iVbXwHV9A1tyaasYqutteIXxqHMzOoQAyJZw9ogAELdHhdQ8u");
     	usuario.setAccountNonLocked(true);
     	usuario.setEnabled(true);
-    	usuario.setClienteId("2315");
+    	usuario.setClienteId(2315l);
     	
 //    	GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_REST_USER_FIND");
 //    	Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();

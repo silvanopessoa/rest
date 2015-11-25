@@ -32,8 +32,8 @@ public final class IdentidadeHelper {
      *
      * @return O(a)(s) cliente id from auth
      */
-    public static final String getClienteIdFromAuth() {
-        String tenantId = null;
+    public static final Long getClienteIdFromAuth() {
+        Long tenantId = null;
         if (SecurityContextHolder.getContext().getAuthentication() != null) {
             Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (principal instanceof Usuario) {

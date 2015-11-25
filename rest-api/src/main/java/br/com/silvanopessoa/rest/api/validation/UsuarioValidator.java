@@ -31,7 +31,7 @@ public class UsuarioValidator{
 	/**
 	 * Check client id.
 	 */
-	public void checkClientId(String clienteId){
+	public void checkClientId(Long clienteId){
 		
 	}
 	
@@ -59,7 +59,7 @@ public class UsuarioValidator{
      * @param usuario O(a)(s) usuario
      * @param clienteId O(a)(s) cliente id
      */
-    public void checkCreateRequest(UsuarioType usuario, String clienteId){
+    public void checkCreateRequest(UsuarioType usuario, Long clienteId){
         this.checkClientId(clienteId);
         this.checkUsuarioType(usuario);
     }
@@ -71,7 +71,7 @@ public class UsuarioValidator{
      * @param usuario O(a)(s) usuario
      * @param clienteId O(a)(s) cliente id
      */
-    public void checkUpdateRequest(String login, UsuarioType usuario, String clienteId){
+    public void checkUpdateRequest(String login, UsuarioType usuario, Long clienteId){
     	this.checkClientId(clienteId);
     	this.checkLogin(login);
     	this.checkUsuarioType(usuario);
@@ -83,7 +83,7 @@ public class UsuarioValidator{
      * @param login o(a) login
      * @param clienteId o(a) cliente id
      */
-    public void checkDeleteRequest(String login, String clienteId){
+    public void checkDeleteRequest(String login, Long clienteId){
     	this.checkClientId(clienteId);
     	this.checkLogin(login);
     }
@@ -95,7 +95,7 @@ public class UsuarioValidator{
      * @param dataAlteracao o(a) data alteracao
      * @param clienteId o(a) cliente id
      */
-    public void checkGetRequest(String login, String dataAlteracao, String clienteId){
+    public void checkGetRequest(String login, String dataAlteracao, Long clienteId){
     	this.checkClientId(clienteId);
     	this.checkLogin(login);
     }

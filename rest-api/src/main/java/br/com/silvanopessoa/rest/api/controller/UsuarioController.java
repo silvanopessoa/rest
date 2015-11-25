@@ -125,7 +125,7 @@ public class UsuarioController {
     @RequestMapping(method = POST, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> createUsuario(@RequestBody UsuarioType usuario) {
         LOGGER.info("POST USUARIO | Iniciado | Salvar usuário. Entity:" + usuario);
-        String clienteId = getClienteIdFromAuth();
+        Long clienteId = getClienteIdFromAuth();
         validator.checkCreateRequest(usuario,clienteId);
         Usuario usuarioEntity = assembler.toEntity(usuario);
         service.salvarUsuario(usuarioEntity,clienteId);
@@ -162,7 +162,7 @@ public class UsuarioController {
     @RequestMapping(method=PUT, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> updateUsuario(@PathVariable("login") String login, @RequestBody UsuarioType usuario){
         LOGGER.info("PUT USUARIO | Iniciado | Alterar usuário. Usuário:{}, Entity:{}",usuario,login);
-        String clienteId = getClienteIdFromAuth();
+        Long clienteId = getClienteIdFromAuth();
         validator.checkUpdateRequest(login, usuario,clienteId);
         ResponseEntity<Void> responseEntity = this.createUsuarioOrUpdateUsuario(login, usuario,clienteId);
         LOGGER.info("PUT USUARIO | Concluido | Alterar usuário. Usuário:{}, Entity:{}",usuario,login);
@@ -177,7 +177,7 @@ public class UsuarioController {
      * @param clienteId o(a) cliente id
      * @return the response entity
      */
-    protected ResponseEntity<Void> createUsuarioOrUpdateUsuario(String login, UsuarioType usuario, String clienteId){
+    protected ResponseEntity<Void> createUsuarioOrUpdateUsuario(String login, UsuarioType usuario, Long clienteId){
         ResponseEntity<Void> responseEntity;
         if(service.isNewUsuario(login,clienteId)){
             LOGGER.info("PUT USUARIO | O usuário é novo e será criado. Usuário:{} Entity:{}",login,usuario);
@@ -219,7 +219,7 @@ public class UsuarioController {
     @RequestMapping(value = "/{login}", method = DELETE, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> deleteUsuario(@PathVariable("login") String login) {
         LOGGER.info("DELETE USUARIO | Iniciado | Inativa o usuário:{}",login);
-        String clienteId = getClienteIdFromAuth();
+        Long clienteId = getClienteIdFromAuth();
         LOGGER.info("DELETE USUARIO | Identificador | Inativa o usuário: {}, cliente: {}",login,clienteId);
         validator.checkDeleteRequest(login, clienteId);
         checkNotFound(service.findByLoginAndClienteId(login, clienteId),msg.deleteCheckNotFoundMessage(login));
@@ -257,7 +257,7 @@ public class UsuarioController {
 	@RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
 		LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário. {}");
-		String clienteId = getClienteIdFromAuth();
+		Long clienteId = getClienteIdFromAuth();
         LOGGER.debug("GET USUARIO | Identificador | Obtem o usuário. Identicador do usuário: {}, cliente: {}, data alteracao: {}",login,clienteId,dataAlteracao);
         validator.checkGetRequest(login, dataAlteracao, clienteId);
         Usuario usuario = service.getUsuario(login, dataAlteracao, clienteId);

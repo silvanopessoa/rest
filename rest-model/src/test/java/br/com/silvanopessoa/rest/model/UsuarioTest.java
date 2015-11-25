@@ -18,6 +18,7 @@ import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanEqualsFor;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanHashCodeFor;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSettersFor;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertNotNull;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 
@@ -25,6 +26,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.silvanopessoa.rest.test.util.beanmatchers.BeanMatcherRegisters;
+import br.com.six2six.fixturefactory.Fixture;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 /**
  * The Class UsuarioTest.
@@ -34,13 +37,25 @@ public class UsuarioTest{
 	/**
 	 * Setup.
 	 * 
-	 * @see @see https://github.com/orien/bean-matchers#generating-property-values 
+	 * @see https://github.com/orien/bean-matchers#generating-property-values
+	 * @see https://github.com/six2six/fixture-factory#managing-templates 
 	 */
 	@BeforeClass
 	public static void setup(){
 		BeanMatcherRegisters.load();
+		FixtureFactoryLoader.loadTemplates("br.com.silvanopessoa.rest.model.template");
 	}
 	
+    /**
+     * Load usuario.
+     *
+     * @param nome O(a)(s) nome
+     * @return O(a)(s) usuario
+     */
+    public static Usuario loadUsuario(String nome) {
+        return Fixture.from(Usuario.class).gimme(nome);
+    }
+    
 	/**
 	 * Deve_respeitar_contrato_equals_para_os_campos_informados.
 	 * 
@@ -90,5 +105,18 @@ public class UsuarioTest{
 	public void deve_ter_get_set_para_algumas_propriedades(){
 		assertThat(Usuario.class, hasValidGettersAndSettersFor("clienteId","dataAlteracao","authorities","password"));
 	}
+	
+	/**
+	 * Deve_gerar_um_usuario_valido.
+	 * 
+	 * @see https://github.com/junit-team/junit/wiki/Assertions
+	 */
+	@Test
+	public void deve_gerar_um_usuario_valido(){
+		Usuario usuario = loadUsuario("valid");
+		assertNotNull(usuario);
+	}
+	
+
 
 }

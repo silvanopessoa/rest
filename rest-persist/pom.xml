@@ -8,15 +8,18 @@
 	</parent>
 	<artifactId>rest-persist</artifactId>
 	<dependencies>
+	
+		<!-- 00 - DEPENDENCIA DE MÓDULOS -->
+		<dependency>
+			<groupId>br.com.silvanopessoa.rest</groupId>
+			<artifactId>rest-model</artifactId>
+			<version>${rest-modulo-version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.webflow</groupId>
 			<artifactId>spring-webflow</artifactId>
 			<version>2.4.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>br.com.silvanopessoa.rest</groupId>
-			<artifactId>rest-model</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -26,5 +29,16 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 		</dependency>
+		
+		<!-- 13 - TESTES -->
+		<!-- http://maven.apache.org/guides/mini/guide-attached-tests.html -->
+		<dependency>
+			<groupId>br.com.silvanopessoa.rest</groupId>
+			<artifactId>rest-model</artifactId>
+			<version>${rest-modulo-version}</version>
+			<type>test-jar</type>
+      		<scope>test</scope>
+		</dependency>
+	
 	</dependencies>
 </project>

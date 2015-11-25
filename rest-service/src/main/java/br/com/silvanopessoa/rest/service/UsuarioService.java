@@ -33,7 +33,7 @@ public class UsuarioService {
      * @param clienteId o(a) cliente id
      * @return the usuario
      */
-    public Usuario findByLoginAndClienteId(String login, String clienteId) {
+    public Usuario findByLoginAndClienteId(String login, Long clienteId) {
         return null;
     }
 
@@ -44,7 +44,7 @@ public class UsuarioService {
      * @param login o(a) login
      * @return true, se for new usuario
      */
-    public boolean isNewUsuario(String login, String clienteId) {
+    public boolean isNewUsuario(String login, Long clienteId) {
         return login == null || this.findByLoginAndClienteId(login, clienteId) == null;
     }
 
@@ -56,7 +56,7 @@ public class UsuarioService {
      * @param clienteId o(a) cliente id
      * @return the usuario
      */
-    public Usuario updateUsuario(String login, Usuario usuario, String clienteId) {
+    public Usuario updateUsuario(String login, Usuario usuario, Long clienteId) {
         return null;
     }
     
@@ -66,7 +66,7 @@ public class UsuarioService {
      * @param login o(a) login
      * @param clienteId o(a) cliente id
      */
-    public void deleteUsuario(String login, String clienteId){
+    public void deleteUsuario(String login, Long clienteId){
         
     }
 
@@ -79,7 +79,7 @@ public class UsuarioService {
      * @param clienteId o(a) cliente id
      * @return o(a) usuario
      */
-    public Usuario getUsuario(String login, String dataAlteracao, String clienteId) {
+    public Usuario getUsuario(String login, String dataAlteracao, Long clienteId) {
         Usuario usuario = new Usuario();
         usuario.setId("silvano@web");
         usuario.setDataAlteracao(DateTime.now());
@@ -92,7 +92,7 @@ public class UsuarioService {
 	 * @param usuarioEntity O(a)(s) usuario entity
 	 * @param clienteId O(a)(s) cliente id
 	 */
-	public void salvarUsuario(Usuario usuarioEntity, String clienteId) {
+	public void salvarUsuario(Usuario usuarioEntity, Long clienteId) {
 		
 	}
 }
