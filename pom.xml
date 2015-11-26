@@ -71,7 +71,7 @@
 		<!-- http://www.jqno.nl/equalsverifier/ -->
 		<equalsverifier-version>1.7.5</equalsverifier-version>
 		<!-- https://github.com/six2six/fixture-factory -->
-		<fixture-factory-version>3.0.0</fixture-factory-version>
+		<fixture-factory-version>3.1.0</fixture-factory-version>
 		<!--http://maven.apache.org/guides/mini/guide-attached-tests.html -->
 		<maven-jar-plugin-version>2.6</maven-jar-plugin-version>
 		

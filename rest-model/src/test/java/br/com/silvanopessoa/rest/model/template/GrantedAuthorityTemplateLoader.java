@@ -29,7 +29,7 @@ public class GrantedAuthorityTemplateLoader implements TemplateLoader{
 	@Override
 	public void load() {
 		Fixture.of(SimpleGrantedAuthority.class).addTemplate("valid", new CustomRule(){{
-			add("role",regex("ROLE_(\\w{5,10})_(\\w{5,10})"));
+			add("role",regex("ROLE_([A-Z]{5,10})_([A-Z]{5,10})"));
 		}});
 	
 	}
