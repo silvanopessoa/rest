@@ -57,14 +57,17 @@ public class Usuario extends AbstractPersistable<String> implements UserDetails{
     /** O(a)(s) password. */
     private String password;
     
+    /** O(a)(s) nome. */
+    private String nome;
+    
     /** O(a)(s) authorities. */
     private Collection<? extends GrantedAuthority> authorities;
 
 	//-------------------------------------------------------------------------------------------//
 	//-------------------------------------- CODIGO CLIENTE -------------------------------------//
 	//-------------------------------------------------------------------------------------------//
-    
-    /**
+
+	/**
      * Obtém o valor do(a)(s) cliente id.
      *
      * @return O(a)(s) cliente id
@@ -258,6 +261,29 @@ public class Usuario extends AbstractPersistable<String> implements UserDetails{
 	 */
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+	
+	//-------------------------------------------------------------------------------------------//
+	//----------------------------------------- NOME --------------------------------------------//
+	//-------------------------------------------------------------------------------------------//
+    
+	
+    /**
+	 * Obtém o valor do(a)(s) nome.
+	 *
+	 * @return O(a)(s) nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * Define o valor do(a)(s) nome.
+	 *
+	 * @param nome o novo valor do(a)(s) nome
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	//-------------------------------------------------------------------------------------------//
