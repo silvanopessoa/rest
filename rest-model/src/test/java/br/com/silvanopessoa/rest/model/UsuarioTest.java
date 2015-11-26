@@ -19,6 +19,9 @@ import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanHashCodeFor;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSettersFor;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotNull;
+
+import java.lang.reflect.Field;
+
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 
@@ -26,6 +29,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.silvanopessoa.rest.test.util.beanmatchers.BeanMatcherRegisters;
+import br.com.silvanopessoa.rest.test.util.reflection.ReflectionUtil;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
@@ -118,5 +122,19 @@ public class UsuarioTest{
 	}
 	
 
+	public void deve_(){
+		//assertThat(field("clienteId"), not(acceptNull()));
+	}
+	
+	/**
+	 * Field.
+	 *
+	 * @param nome O(a)(s) nome
+	 * @return O(a)(s) field
+	 */
+	public static Field field(String fieldName) {
+		return ReflectionUtil.getField(Usuario.class, fieldName);
+	}
+	
 
 }

@@ -72,8 +72,11 @@
 		<equalsverifier-version>1.7.5</equalsverifier-version>
 		<!-- https://github.com/six2six/fixture-factory -->
 		<fixture-factory-version>3.1.0</fixture-factory-version>
-		<!--http://maven.apache.org/guides/mini/guide-attached-tests.html -->
+		<!-- http://maven.apache.org/guides/mini/guide-attached-tests.html -->
 		<maven-jar-plugin-version>2.6</maven-jar-plugin-version>
+		<!-- http://projetos.vidageek.net/ -->
+		<mirror-version>1.6.1</mirror-version>
+		
 		
 		<!-- 80 - BANCO DE DADOS -->
 		<spring-data-mongodb-version>1.7.0.RELEASE</spring-data-mongodb-version>

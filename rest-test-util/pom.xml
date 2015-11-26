@@ -35,6 +35,12 @@
 			<artifactId>joda-time</artifactId>
 			<version>${joda-time-version}</version>
 		</dependency>
+		<!-- http://projetos.vidageek.net/mirror/mirror/ -->
+		<dependency>
+			<groupId>net.vidageek</groupId>
+			<artifactId>mirror</artifactId>
+			<version>${mirror-version}</version>
+		</dependency>
 		
 	</dependencies>
 	
