@@ -156,14 +156,30 @@ public class UsuarioTest{
 		List<SimpleGrantedAuthority> mockedList = Mockito.mock(ArrayList.class);
 		SimpleGrantedAuthority simpleGrantedAuthority= new SimpleGrantedAuthority("asdasd");
 		Mockito.stub(mockedList.get(0)).toReturn(simpleGrantedAuthority);
+		
 		System.out.println(mockedList.get(0));
 		System.out.println(mockedList.get(999));
 		Mockito.verify(mockedList).get(0);//verifica se o get(0) foi chamado
 		
 		Mockito.verify(mockedList, Mockito.times(0)).add(simpleGrantedAuthority);
 		Mockito.verify(mockedList, Mockito.times(999));
-		 
-		
+	}
+	
+	
+	/**
+	 * Deve_exemplo.
+	 * 
+	 * Outro exemplo são objetos padrão, pré definidos e usados diversas vezes nos testes. 
+	 * Em um sistema acadêmico um aluno inscrito ou com matricula cancelada, pode ser criado dessa forma. 
+	 * É comum que um objeto Fake tenha apenas os atributos importantes para representar o estado necessário ao teste. 
+	 * Assim, um aluno inscrito provavelmente terá apenas o valor "inscrito" para o atributo "situação".
+	 * 
+	 * http://www.danielcastellani.com.br/2013/09/test-double.html
+	 */
+	@Test
+	public void deve_exemplo(){
+		Usuario usuarioFake = loadUsuario("valid");
+		System.out.println(usuarioFake);
 	}
 	
 	/**
