@@ -81,6 +81,7 @@ public class DoubleTest {
 		Mockito.stub(spy.get(0)).toReturn(simpleGrantedAuthority);
 		System.out.println(spy.get(0));
 		Mockito.verify(spy, Mockito.times(1)).get(0);
+		Mockito.verify(spy, Mockito.never()).add(simpleGrantedAuthority);
 	}
 	
 	
