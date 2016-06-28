@@ -64,15 +64,18 @@ public class ClientDetailsServiceImpl implements ClientDetailsService{
     	authorizedGrantTypes.add("password");
     	authorizedGrantTypes.add("refresh_token");
     	customClientDetails.setAuthorizedGrantTypes(authorizedGrantTypes);
-    	customClientDetails.setClientSecret("$2a$10$AS30Aq4frR7cpQu.fu1MmeHJhark3LOAC4wR3uUBrNyVMk9MZRTeu");
+    	customClientDetails.setClientSecret("$2a$10$J1KMBBWdUJ22TRqzDLAgLelmAYUJh3ZbvcWs6bfJDMbXle6mydy/O");
     	customClientDetails.setRefreshTokenValiditySeconds(15000);
     	customClientDetails.setSecretRequired(true);
     	customClientDetails.setAccessTokenValiditySeconds(15000);
     	Collection<GrantedAuthority> collection = new ArrayList<GrantedAuthority>();
     	SimpleGrantedAuthority authority1 = new SimpleGrantedAuthority("ROLE_CLIENT");
     	SimpleGrantedAuthority authority2 = new SimpleGrantedAuthority("ROLE_TRUSTED_CLIENT");
+    	SimpleGrantedAuthority authority3 = new SimpleGrantedAuthority("ROLE_REST_USER_FIND");
+    	
     	collection.add(authority1);
     	collection.add(authority2);
+    	collection.add(authority3);
     	customClientDetails.setAuthorities(collection);
     	customClientDetails.setName("Cliente Teste");
     	customClientDetails.setScoped(true);

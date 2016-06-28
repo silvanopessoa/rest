@@ -253,7 +253,7 @@ public class UsuarioController {
 		@ApiResponse(code = 403, message = "Forbidden"),		
 		@ApiResponse(code = 404, message = "Not Found"),
 		@ApiResponse(code = 422, message = "Unprocessable Entity")})
-	@RolesAllowed({"ROLE_REST_USER_FIND"})
+//	@RolesAllowed({"ROLE_REST_USER_FIND"})
 	@RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<UsuarioType> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
 		LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário. {}");
